@@ -1,0 +1,39 @@
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Visual Studio files
+*.pidb
+*.userprefs
+*.[Oo]bj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+
+# MonoGame Stuff
+Content/obj
+Content/bin
+Content/**/*.mgcb
+Content/*.mgcb
+
+# IDE
+.vscode/
+.vs/
+.idea/
+
+# Build results
+bin/
+obj/
