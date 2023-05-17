@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
-using MgGame.Entities;
+using MgGame.Engine.Entities;
 
-namespace MgGame.Components;
+namespace MgGame.Engine.Components;
 
 
 public interface IComponent

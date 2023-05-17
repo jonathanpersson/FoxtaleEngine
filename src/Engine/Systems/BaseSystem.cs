@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using MgGame.Components;
+using MgGame.Engine.Components;
 
-namespace MgGame.Systems;
+namespace MgGame.Engine.Systems;
 
 public abstract class BaseSystem<T> where T : IComponent
 {

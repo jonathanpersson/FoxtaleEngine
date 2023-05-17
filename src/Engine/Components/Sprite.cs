@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MgGame.Entities;
-using MgGame.Systems;
+using MgGame.Engine.Entities;
+using MgGame.Engine.Systems;
 
-namespace MgGame.Components;
+namespace MgGame.Engine.Components;
 
 public class Sprite : IComponent
 {

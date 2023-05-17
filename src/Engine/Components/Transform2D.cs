@@ -1,11 +1,11 @@
 using System;
 using Microsoft.Xna.Framework;
-using MgGame.Entities;
-using MgGame.Systems;
+using MgGame.Engine.Entities;
+using MgGame.Engine.Systems;
 
-namespace MgGame.Components;
+namespace MgGame.Engine.Components;
 
-public class Transform : IComponent
+public class Transform2D : IComponent
 {
     public Vector2 Position { get; set; }
     public Vector2 Scale { get; set; }
@@ -13,9 +13,9 @@ public class Transform : IComponent
     public float LayerDepth { get; set; }
     public IEntity Entity { get; set; }
 
-    public Transform()
+    public Transform2D()
     {
-        TransformSystem.AddComponent(this);
+        Transform2DSystem.AddComponent(this);
     }
 
     public void Initialize() { }

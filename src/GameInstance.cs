@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MgGame.Systems;
+using MgGame.Engine.Systems;
 
 namespace MgGame;
 
@@ -30,7 +30,7 @@ public class GameInstance : Game
         _graphics.ApplyChanges();
 
         // init systems here
-        TransformSystem.Initialize();
+        Transform2DSystem.Initialize();
         SpriteSystem.Initialize();
 
         base.Initialize();
@@ -48,7 +48,7 @@ public class GameInstance : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        TransformSystem.Update(gameTime);
+        Transform2DSystem.Update(gameTime);
         SpriteSystem.Update(gameTime);
 
         base.Update(gameTime);

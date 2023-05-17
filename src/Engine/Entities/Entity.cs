@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using MgGame.Components;
+using MgGame.Engine.Components;
 
-namespace MgGame.Entities;
+namespace MgGame.Engine.Entities;
 
-public interface IEntity
+public class Entity : IEntity
 {
     /// <summary>
     /// Unique identifier for the entity
@@ -15,6 +15,14 @@ public interface IEntity
     /// List of components attached to the entity
     /// </summary>
     public List<IComponent> Components { get; set; }
+
+    public Entity()
+    {
+        Id = Guid.NewGuid();
+        Components = new List<IComponent>();
+        Transform2D Transform2D = new();
+        AddComponent(Transform2D);
+    }
 
     /// <summary>
     /// Add a component to the entity
