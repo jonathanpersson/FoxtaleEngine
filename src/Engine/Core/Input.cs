@@ -6,7 +6,7 @@ public static class Input
 {
     private static KeyboardState _currentKeyboardState;
     private static KeyboardState _previousKeyboardState;
-
+    
     public static void Update()
     {
         _previousKeyboardState = _currentKeyboardState;
