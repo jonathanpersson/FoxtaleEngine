@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Extended.BitmapFonts;
 using MgGame.Engine.Systems;
+using MgGame.Engine.UI;
 
 namespace MgGame;
 
@@ -29,6 +31,9 @@ public class GameInstance : Game
         _graphics.SynchronizeWithVerticalRetrace = false;
         _graphics.ApplyChanges();
 
+        // initialize UI system
+        UserInterface.Initialize();
+
         // init systems here
         Transform2DSystem.Initialize();
         SpriteSystem.Initialize();
@@ -41,6 +46,7 @@ public class GameInstance : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         //TODO: Load the most essential content here, then
         // load the rest of the content during loading screens
+        UserInterface.LoadContent(Content.Load<BitmapFont>("Fonts/PressStart2P"));
     }
 
     protected override void Update(GameTime gameTime)
@@ -51,6 +57,8 @@ public class GameInstance : Game
         Transform2DSystem.Update(gameTime);
         SpriteSystem.Update(gameTime);
 
+        UserInterface.Update();
+
         base.Update(gameTime);
     }
 
@@ -58,8 +66,13 @@ public class GameInstance : Game
     {
         GraphicsDevice.Clear(Color.Black);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
 
-        base.Draw(gameTime);
+        // TODO: Add your drawing code here
+        //UserInterface.Active.Draw(_spriteBatch);
+
+        UserInterface.Draw(_spriteBatch);
+
+        _spriteBatch.End();
     }
 }
