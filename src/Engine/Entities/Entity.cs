@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using MgGame.Engine.Components;
+using MgGame.Engine.Exceptions;
 
 namespace MgGame.Engine.Entities;
 
@@ -45,7 +46,7 @@ public class Entity : IEntity
         {
             if (component is T) return (T)component;
         }
-        return default(T);
+        throw new MissingComponentException(this, typeof(T));
     }
 
     /// <summary>
@@ -56,7 +57,16 @@ public class Entity : IEntity
     /// <returns>True iff component is not equal to default value for type T</returns>
     public bool TryGetComponent<T>(out T component) where T : IComponent
     {
-        component = GetComponent<T>();
-        return !component.Equals(default(T));
+        try
+        {
+            component = GetComponent<T>();
+            return true;
+        }
+        catch (MissingComponentException)
+        {
+            //TODO: Log error
+            component = default(T);
+        }
+        return false;
     }
 }

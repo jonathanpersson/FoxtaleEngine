@@ -1,11 +1,14 @@
-namespace MgGame.Engine.Entities;
+using MgGame.Engine.Entities;
+using MgGame.Components;
+
+namespace MgGame.Entities;
 
 public class Chunk : Entity
 {
-    public const int ChunkWidth = 16;
-    public const int ChunkHeight = 16;
+    public static int Width => ChunkData.Width;
+    public static int Height => ChunkData.Height;
 
     public Chunk() {
-
+        AddComponent(new ChunkData());
     }
 }
