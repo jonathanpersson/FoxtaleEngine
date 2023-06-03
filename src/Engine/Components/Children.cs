@@ -5,15 +5,15 @@ using MgGame.Engine.Systems;
 
 namespace MgGame.Engine.Components;
 
-public class Universe2D : IComponent
+public class Children : IComponent
 {
-    List<IEntity> _content;
+    List<IEntity> _children;
     public IEntity Entity { get; set; }
 
-    public Universe2D()
+    public Children()
     {
-        _content = new();
-        Universe2DSystem.AddComponent(this);
+        _children = new();
+        ChildrenSystem.AddComponent(this);
     }
 
     public void Initialize()
