@@ -2,19 +2,24 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.BitmapFonts;
+using MgGame.Engine.Components.UI;
+using MgGame.Engine.Entities.UI;
+using System.Runtime.CompilerServices;
 
-namespace MgGame.Engine.UI;
+namespace MgGame.Engine.Systems.UI;
 
-public static class UserInterface
+public class UserInterfaceSystem : BaseSystem<UIComponent>
 {
     /// <summary>
     /// Font used to render the UI
     /// </summary>
     public static BitmapFont Font { get; private set; }
 
-    public static void Initialize()
-    {
+    public static GraphicsDeviceManager Graphics { get; private set; }
 
+    public static void Initialize(GraphicsDeviceManager graphics)
+    {
+        Graphics = graphics;
     }
 
     /// <summary>
@@ -40,13 +45,8 @@ public static class UserInterface
 
     }
 
-    public static void Update()
-    {
-
-    }
-
     public static void Draw(SpriteBatch sb)
     {
-        sb.DrawString(Font, "Hello, world!", Vector2.Zero, Color.White);
+
     }
 }

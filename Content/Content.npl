@@ -2,7 +2,7 @@
 	"root": "",
 	"references":
 	[
-		"../../../../../.nuget/packages/monogame.extended.content.pipeline/3.8.0/tools/MonoGame.Extended.Content.Pipeline.dll"
+		"../../../../.nuget/packages/monogame.extended.content.pipeline/3.8.0/tools/MonoGame.Extended.Content.Pipeline.dll"
 	],
 	"content":
 	{

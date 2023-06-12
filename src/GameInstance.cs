@@ -5,14 +5,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.BitmapFonts;
 using MgGame.Engine.Systems;
-using MgGame.Engine.UI;
+using MgGame.Engine.Systems.UI;
 using MgGame.World;
 
 namespace MgGame;
 
 public class GameInstance : Game
 {
-    private GraphicsDeviceManager _graphics;
+    private static GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
     public GameInstance()
@@ -29,16 +29,16 @@ public class GameInstance : Game
         IsFixedTimeStep = false;
         _graphics.GraphicsProfile = GraphicsProfile.HiDef;
         _graphics.PreferredBackBufferWidth = 1280;
-        _graphics.PreferredBackBufferHeight = 720;
+        _graphics.PreferredBackBufferHeight = 900;
         _graphics.PreferMultiSampling = true;
         _graphics.SynchronizeWithVerticalRetrace = false;
         _graphics.ApplyChanges();
 
         // initialize UI system
-        UserInterface.Initialize();
+        UserInterfaceSystem.Initialize(_graphics);
+
 
         // init systems here
-        Universe2DSystem.Initialize();
         Transform2DSystem.Initialize();
         SpriteSystem.Initialize();
         ColliderSystem.Initialize();
@@ -59,7 +59,7 @@ public class GameInstance : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         //TODO: Load the most essential content here, then
         // load the rest of the content during loading screens
-        UserInterface.LoadContent(Content.Load<BitmapFont>("Fonts/PressStart2P"));
+        UserInterfaceSystem.LoadContent(Content.Load<BitmapFont>("Fonts/PressStart2P"));
     }
 
     protected override void Update(GameTime gameTime)
@@ -67,13 +67,12 @@ public class GameInstance : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        Universe2DSystem.Update(gameTime);
         Transform2DSystem.Update(gameTime);
         SpriteSystem.Update(gameTime);
         ColliderSystem.Update(gameTime);
         ScriptSystem.Update(gameTime);
 
-        UserInterface.Update();
+        UserInterfaceSystem.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -87,7 +86,7 @@ public class GameInstance : Game
         // TODO: Add your drawing code here
         //UserInterface.Active.Draw(_spriteBatch);
 
-        UserInterface.Draw(_spriteBatch);
+        UserInterfaceSystem.Draw(_spriteBatch);
 
         _spriteBatch.End();
     }
