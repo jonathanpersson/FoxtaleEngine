@@ -29,8 +29,9 @@ public class Sprite : IComponent
         SpriteSystem.AddComponent(this);
     }
 
-    public Sprite(Texture2D spriteTexture)
+    public Sprite(Texture2D texture)
     {
+        Texture = texture;
         SpriteSystem.AddComponent(this);
     }
 

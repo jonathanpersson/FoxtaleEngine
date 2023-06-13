@@ -21,8 +21,6 @@ public class Entity : IEntity
     {
         Id = Guid.NewGuid();
         Components = new List<IComponent>();
-        Transform2D Transform2D = new();
-        AddComponent(Transform2D);
     }
 
     /// <summary>

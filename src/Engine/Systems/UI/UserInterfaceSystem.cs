@@ -23,7 +23,7 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
     public static void Initialize(GraphicsDeviceManager graphics)
     {
         Graphics = graphics;
-        testContainer = new Container(new Label(0, 0, "Hello, world!"));
+        testContainer = new Container(new Label(300, 300, "Hello, world!"));
         testContainer.AddComponent(new Style());
     }
 
@@ -42,7 +42,7 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
     /// <param name="font">XNA/MonoGame SpriteFont</param>
     public static void LoadContent(SpriteFont font)
     {
-        throw new NotImplementedException("BitmapFonts are not supported at the moment.");
+        throw new NotImplementedException("SpriteFonts are not supported at the moment.");
     }
 
     public static void UnloadContent()

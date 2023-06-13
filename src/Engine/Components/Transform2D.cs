@@ -30,6 +30,7 @@ public class Transform2D : IComponent
         Scale = scale;
         Rotation = rotation;
         LayerDepth = layerDepth;
+        Transform2DSystem.AddComponent(this);
     }
 
     public void Initialize() { }
