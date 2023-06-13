@@ -1,13 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Diagnostics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MgGame.Systems;
+using MonoGame.Extended.BitmapFonts;
+using MgGame.Engine.Systems;
+using MgGame.Engine.Systems.UI;
+using MgGame.World;
 
 namespace MgGame;
 
 public class GameInstance : Game
 {
-    private GraphicsDeviceManager _graphics;
+    private static GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
     public GameInstance()
@@ -24,14 +29,27 @@ public class GameInstance : Game
         IsFixedTimeStep = false;
         _graphics.GraphicsProfile = GraphicsProfile.HiDef;
         _graphics.PreferredBackBufferWidth = 1280;
-        _graphics.PreferredBackBufferHeight = 720;
+        _graphics.PreferredBackBufferHeight = 900;
         _graphics.PreferMultiSampling = true;
         _graphics.SynchronizeWithVerticalRetrace = false;
         _graphics.ApplyChanges();
 
+        // initialize UI system
+        UserInterfaceSystem.Initialize(_graphics);
+
+
         // init systems here
-        TransformSystem.Initialize();
+        Transform2DSystem.Initialize();
         SpriteSystem.Initialize();
+        ColliderSystem.Initialize();
+        ScriptSystem.Initialize();
+
+        // TEMP
+        Console.WriteLine("Starting worldgen test");
+        Stopwatch sw = Stopwatch.StartNew();
+        WorldGenerator.Generate();
+        sw.Stop();
+        Console.WriteLine($"Generated world in {sw.ElapsedTicks} ticks ({sw.ElapsedMilliseconds} ms)");
 
         base.Initialize();
     }
@@ -41,6 +59,7 @@ public class GameInstance : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         //TODO: Load the most essential content here, then
         // load the rest of the content during loading screens
+        UserInterfaceSystem.LoadContent(Content.Load<BitmapFont>("Fonts/PressStart2P"));
     }
 
     protected override void Update(GameTime gameTime)
@@ -48,8 +67,12 @@ public class GameInstance : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        TransformSystem.Update(gameTime);
+        Transform2DSystem.Update(gameTime);
         SpriteSystem.Update(gameTime);
+        ColliderSystem.Update(gameTime);
+        ScriptSystem.Update(gameTime);
+
+        UserInterfaceSystem.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -58,8 +81,13 @@ public class GameInstance : Game
     {
         GraphicsDevice.Clear(Color.Black);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
 
-        base.Draw(gameTime);
+        // TODO: Add your drawing code here
+        //UserInterface.Active.Draw(_spriteBatch);
+
+        UserInterfaceSystem.Draw(_spriteBatch);
+
+        _spriteBatch.End();
     }
 }

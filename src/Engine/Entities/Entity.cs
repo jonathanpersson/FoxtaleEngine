@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using MgGame.Components;
+using MgGame.Engine.Components;
+using MgGame.Engine.Exceptions;
 
-namespace MgGame.Entities;
+namespace MgGame.Engine.Entities;
 
-public interface IEntity
+public class Entity : IEntity
 {
     /// <summary>
     /// Unique identifier for the entity
@@ -15,6 +16,14 @@ public interface IEntity
     /// List of components attached to the entity
     /// </summary>
     public List<IComponent> Components { get; set; }
+
+    public Entity()
+    {
+        Id = Guid.NewGuid();
+        Components = new List<IComponent>();
+        Transform2D Transform2D = new();
+        AddComponent(Transform2D);
+    }
 
     /// <summary>
     /// Add a component to the entity
@@ -37,7 +46,7 @@ public interface IEntity
         {
             if (component is T) return (T)component;
         }
-        return default(T);
+        throw new MissingComponentException(this, typeof(T));
     }
 
     /// <summary>
@@ -48,7 +57,16 @@ public interface IEntity
     /// <returns>True iff component is not equal to default value for type T</returns>
     public bool TryGetComponent<T>(out T component) where T : IComponent
     {
-        component = GetComponent<T>();
-        return !component.Equals(default(T));
+        try
+        {
+            component = GetComponent<T>();
+            return true;
+        }
+        catch (MissingComponentException)
+        {
+            //TODO: Log error
+            component = default(T);
+        }
+        return false;
     }
 }
