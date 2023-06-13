@@ -3,7 +3,6 @@ using MgGame.Engine.Entities;
 
 namespace MgGame.Engine.Components;
 
-
 public interface IComponent
 {
     public IEntity Entity { get; set; }

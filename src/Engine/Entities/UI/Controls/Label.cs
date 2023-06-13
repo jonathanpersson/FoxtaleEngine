@@ -2,9 +2,9 @@
 using MgGame.Engine.Components.UI;
 using MgGame.Engine.Entities;
 
-namespace MgGame.Engine.Entities.UI;
+namespace MgGame.Engine.Entities.UI.Controls;
 
-public class Label : Entity
+public class Label : UIEntity
 {
     public Label(int x, int y, string text) 
     {

@@ -9,7 +9,7 @@ namespace MgGame.Engine.Components.UI;
 
 public class Text : UIComponent
 {
-    public string Content { get; set; }
+    public string Content { get; }
 
     public Text(string content)
     {

@@ -45,11 +45,13 @@ public class GameInstance : Game
         ScriptSystem.Initialize();
 
         // TEMP
+        /*
         Console.WriteLine("Starting worldgen test");
         Stopwatch sw = Stopwatch.StartNew();
         WorldGenerator.Generate();
         sw.Stop();
         Console.WriteLine($"Generated world in {sw.ElapsedTicks} ticks ({sw.ElapsedMilliseconds} ms)");
+        */
 
         base.Initialize();
     }
@@ -86,7 +88,7 @@ public class GameInstance : Game
         // TODO: Add your drawing code here
         //UserInterface.Active.Draw(_spriteBatch);
 
-        UserInterfaceSystem.Draw(_spriteBatch);
+        SpriteSystem.Draw(_spriteBatch);
 
         _spriteBatch.End();
     }

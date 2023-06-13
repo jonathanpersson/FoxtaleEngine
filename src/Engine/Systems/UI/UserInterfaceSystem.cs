@@ -5,6 +5,7 @@ using MonoGame.Extended.BitmapFonts;
 using MgGame.Engine.Components.UI;
 using MgGame.Engine.Entities.UI;
 using System.Runtime.CompilerServices;
+using MgGame.Engine.Entities.UI.Controls;
 
 namespace MgGame.Engine.Systems.UI;
 
@@ -17,9 +18,13 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
 
     public static GraphicsDeviceManager Graphics { get; private set; }
 
+    private static Container testContainer;
+
     public static void Initialize(GraphicsDeviceManager graphics)
     {
         Graphics = graphics;
+        testContainer = new Container(new Label(0, 0, "Hello, world!"));
+        testContainer.AddComponent(new Style());
     }
 
     /// <summary>

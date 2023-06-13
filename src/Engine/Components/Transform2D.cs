@@ -9,7 +9,7 @@ public class Transform2D : IComponent
 {
     public Vector2 Position { get; set; } = Vector2.Zero;
     public Vector2 Scale { get; set; } = Vector2.One;
-    public float Rotation { get; set; } = 0;
+    public float Rotation { get; private set; } = 0;
     public float LayerDepth { get; set; } = 0;
     public IEntity Entity { get; set; }
 
@@ -34,4 +34,10 @@ public class Transform2D : IComponent
 
     public void Initialize() { }
     public void Update(GameTime gameTime) { }
+
+    public void Rotate(float deg)
+    {
+        double d = 1 / 360 * deg;
+        Rotation = (float)Math.Min(d, d - Math.Truncate(d));
+    }
 }
