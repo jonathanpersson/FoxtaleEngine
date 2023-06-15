@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using MgGame.Engine.Entities;
 using MgGame.Engine.Systems;
+using MonoGame.Extended;
 
 namespace MgGame.Engine.Components;
 

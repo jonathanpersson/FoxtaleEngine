@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using MgGame.Engine.Components;
+﻿using MgGame.Engine.Components;
 using MgGame.Engine.Exceptions;
+using System.Collections.Generic;
+using System;
 
 namespace MgGame.Engine.Entities;
 
-public class Entity : IEntity
+public abstract class Entity : IEntity
 {
     /// <summary>
     /// Unique identifier for the entity
@@ -17,7 +17,7 @@ public class Entity : IEntity
     /// </summary>
     public List<IComponent> Components { get; set; }
 
-    public Entity()
+    protected Entity()
     {
         Id = Guid.NewGuid();
         Components = new List<IComponent>();

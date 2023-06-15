@@ -12,7 +12,7 @@ public class SpriteSystem : BaseSystem<Sprite>
         foreach (Sprite sprite in components)
         {
             Vector2 location = sprite.Entity.GetComponent<Transform2D>().Position;
-            sb.Draw(sprite.Texture, location, sprite.RenderColor);
+            sb.Draw(sprite.Texture, location, sprite.RenderTint);
         }
     }
 }

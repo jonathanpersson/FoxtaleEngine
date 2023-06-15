@@ -3,7 +3,7 @@ using MgGame.Engine.Systems;
 
 namespace MgGame.Engine.Entities;
 
-public class Universe2D : Entity
+public class Universe2D : Entity2D
 {
     public Universe2D()
     {

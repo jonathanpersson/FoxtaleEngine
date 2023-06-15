@@ -10,19 +10,7 @@ public class Sprite : IComponent
 {
     public Texture2D Texture { get; set; }
     public IEntity Entity { get; set; }
-
-    public Color RenderColor
-    {
-        get
-        {
-            //todo: inherit style?
-            if (Entity.TryGetComponent(out Style style))
-            {
-                return style.ForegroundColor;
-            }
-            return Color.White;
-        }
-    }
+    public Color RenderTint { get; set; } = Color.White;
 
     public Sprite()
     {

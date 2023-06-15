@@ -3,7 +3,7 @@ using MgGame.Components;
 
 namespace MgGame.Entities;
 
-public class Chunk : Entity
+public class Chunk : Entity2D
 {
     public static int Width => ChunkData.Width;
     public static int Height => ChunkData.Height;
