@@ -7,6 +7,7 @@ using MonoGame.Extended.BitmapFonts;
 using MgGame.Engine.Systems;
 using MgGame.Engine.Systems.UI;
 using MgGame.World;
+using MgGame.Engine.Entities;
 
 namespace MgGame;
 
@@ -14,6 +15,8 @@ public class GameInstance : Game
 {
     private static GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+
+    public static Universe2D ActiveUniverse { get; set; }
 
     public GameInstance()
     {
@@ -52,6 +55,8 @@ public class GameInstance : Game
         sw.Stop();
         Console.WriteLine($"Generated world in {sw.ElapsedTicks} ticks ({sw.ElapsedMilliseconds} ms)");
         */
+
+        ActiveUniverse = new Universe2D();
 
         base.Initialize();
     }

@@ -2,7 +2,7 @@
 using MonoGame.Extended;
 using Microsoft.Xna.Framework;
 
-namespace MgGame.Engine.Components;
+namespace MgGame.Engine.Components.Physics;
 
 public interface IPhysicsObject2D : IComponent
 {
@@ -19,5 +19,7 @@ public interface IPhysicsObject2D : IComponent
     public Quadrilateral Bounds { get; set; }
     public float Mass { get; set; }
     public float MaxVelocity { get; }
-    public Vector2 Velocity { get; }
+    public float Density { get; }
+    public Vector2 Velocity { get; set; }
+    public Vector2 Acceleration { get; set; }
 }
