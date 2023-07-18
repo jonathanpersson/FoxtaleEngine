@@ -1,3 +1,3 @@
-﻿namespace MgGame.Engine.Entities.UI;
+﻿namespace Foxtale.Engine.Entities.UI;
 
 public class UIEntity : Entity2D, IUIEntity { }

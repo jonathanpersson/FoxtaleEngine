@@ -1,9 +1,9 @@
-using MgGame.Engine.Components;
-using MgGame.Engine.Entities;
+using Foxtale.Engine.Components;
+using Foxtale.Engine.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MgGame.Engine.Systems;
+namespace Foxtale.Engine.Systems;
 
 public class SpriteSystem : BaseSystem<Sprite>
 {
@@ -11,8 +11,10 @@ public class SpriteSystem : BaseSystem<Sprite>
     {
         foreach (Sprite sprite in components)
         {
-            Vector2 location = sprite.Entity.GetComponent<Transform2D>().Position;
-            sb.Draw(sprite.Texture, location, sprite.RenderTint);
+            Transform2D transform = sprite.Entity.GetComponent<Transform2D>();
+            sb.Draw(sprite.Texture, transform.Position, sprite.Texture.Bounds, sprite.RenderTint,
+                transform.Rotation, transform.Origin, transform.Scale, 
+                SpriteEffects.None, transform.LayerDepth);
         }
     }
 }

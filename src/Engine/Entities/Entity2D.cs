@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using MgGame.Engine.Components;
-using MgGame.Engine.Exceptions;
+using Foxtale.Engine.Components;
+using Foxtale.Engine.Exceptions;
 
-namespace MgGame.Engine.Entities;
+namespace Foxtale.Engine.Entities;
 
 public class Entity2D : Entity
 {

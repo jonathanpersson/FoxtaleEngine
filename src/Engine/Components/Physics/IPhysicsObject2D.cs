@@ -1,8 +1,8 @@
-﻿using MgGame.Engine.Core;
+﻿using Foxtale.Engine.Core;
 using MonoGame.Extended;
 using Microsoft.Xna.Framework;
 
-namespace MgGame.Engine.Components.Physics;
+namespace Foxtale.Engine.Components.Physics;
 
 public interface IPhysicsObject2D : IComponent
 {

@@ -1,8 +1,8 @@
+using Foxtale.Engine.Entities;
+using Foxtale.Engine.Systems;
 using Microsoft.Xna.Framework;
-using MgGame.Engine.Entities;
-using MgGame.Engine.Systems;
 
-namespace MgGame.Engine.Components;
+namespace Foxtale.Engine.Components;
 
 public abstract class Script : IComponent
 {

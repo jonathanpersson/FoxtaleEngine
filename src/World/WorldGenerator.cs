@@ -1,8 +1,8 @@
 using System;
+using Foxtale.Entities;
 using SimplexNoise;
-using MgGame.Entities;
 
-namespace MgGame.World;
+namespace Foxtale.World;
 
 public static class WorldGenerator
 {

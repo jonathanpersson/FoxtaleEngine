@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework.Input;
 
-namespace MgGame.Engine.Core;
+namespace Foxtale.Engine.Core;
 
 public static class Input
 {

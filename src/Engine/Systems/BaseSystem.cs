@@ -1,8 +1,8 @@
 using System.Collections.Generic;
+using Foxtale.Engine.Components;
 using Microsoft.Xna.Framework;
-using MgGame.Engine.Components;
 
-namespace MgGame.Engine.Systems;
+namespace Foxtale.Engine.Systems;
 
 public abstract class BaseSystem<T> where T : IComponent
 {

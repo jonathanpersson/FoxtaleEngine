@@ -1,8 +1,8 @@
-﻿using MgGame.Engine.Components;
+﻿using Foxtale.Engine.Components.Physics;
 
-namespace MgGame.Engine.Systems;
+namespace Foxtale.Engine.Systems;
 
-public class RigidBodySystem : BaseSystem<RigidBody>
+public class RigidBodySystem : BaseSystem<RigidBody2D>
 {
 
 }

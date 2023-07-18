@@ -1,9 +1,9 @@
 using System;
-using MgGame.Engine.Exceptions;
-using MgGame.Entities;
-using MgGame.Components;
+using Foxtale.Components;
+using Foxtale.Entities;
+using Foxtale.Engine.Exceptions;
 
-namespace MgGame.World;
+namespace Foxtale.World;
 
 public class World
 {

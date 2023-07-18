@@ -1,8 +1,9 @@
-﻿using MgGame.Engine.Core;
-using MgGame.Engine.Entities;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using System;
+using Foxtale.Engine.Core;
+using Foxtale.Engine.Entities;
 
-namespace MgGame.Engine.Components.Physics;
+namespace Foxtale.Engine.Components.Physics;
 
 public class RigidBody2D : IPhysicsObject2D
 {
@@ -21,7 +22,8 @@ public class RigidBody2D : IPhysicsObject2D
     {
         _environment = GameInstance.ActiveUniverse.Environment;
         Density = Mass / Bounds.Area;
-
+        //todo: https://en.wikipedia.org/wiki/Terminal_velocity
+        // MaxVelocity = Math.Sqrt((2 * Mass * IPhysicsObject2D.Gravity) / (_environment.Density * ));
     }
 
     public void Update(GameTime gameTime) { }

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
+using Foxtale.Engine.Entities;
+using Foxtale.Engine.Systems;
+using Foxtale.Engine.Systems.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.BitmapFonts;
-using MgGame.Engine.Systems;
-using MgGame.Engine.Systems.UI;
-using MgGame.World;
-using MgGame.Engine.Entities;
+using Foxtale.World;
+using Microsoft.Xna.Framework.Content;
 
-namespace MgGame;
+namespace Foxtale;
 
 public class GameInstance : Game
 {
@@ -17,6 +18,7 @@ public class GameInstance : Game
     private SpriteBatch _spriteBatch;
 
     public static Universe2D ActiveUniverse { get; set; }
+    public static ContentManager ContentManager { get; set; }
 
     public GameInstance()
     {
@@ -36,6 +38,8 @@ public class GameInstance : Game
         _graphics.PreferMultiSampling = true;
         _graphics.SynchronizeWithVerticalRetrace = false;
         _graphics.ApplyChanges();
+
+        ContentManager = Content;
 
         // initialize UI system
         UserInterfaceSystem.Initialize(_graphics);
@@ -88,7 +92,7 @@ public class GameInstance : Game
     {
         GraphicsDevice.Clear(Color.Black);
 
-        _spriteBatch.Begin();
+        _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
         // TODO: Add your drawing code here
         //UserInterface.Active.Draw(_spriteBatch);

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using MonoGame.Extended;
 
-namespace MgGame.Engine.Core;
+namespace Foxtale.Engine.Core;
 
 public class Quadrilateral
 {
@@ -43,7 +43,7 @@ public class Quadrilateral
     public float AC => Distance(A, C);
     public float BD => Distance(B, D);
 
-    public float Area => 0.5 *
+    public float Area => 0.5f *
         ((A.X * B.Y) - (A.Y * B.X) + (B.X * C.Y) - (B.Y * C.X) + (C.X * D.Y) - (C.Y * D.X) + (D.X * A.Y) - (D.Y * A.X));
 
     public float AngleA => Angle(DA, AC, CD) + Angle(BC, AB, AC);

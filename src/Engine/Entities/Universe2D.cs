@@ -1,8 +1,8 @@
-using MgGame.Engine.Components;
-using MgGame.Engine.Components.Physics;
-using MgGame.Engine.Systems;
+using Foxtale.Engine.Components;
+using Foxtale.Engine.Components.Physics;
+using Foxtale.Engine.Systems;
 
-namespace MgGame.Engine.Entities;
+namespace Foxtale.Engine.Entities;
 
 public class Universe2D : Entity2D
 {

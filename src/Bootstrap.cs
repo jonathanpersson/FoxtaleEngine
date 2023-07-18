@@ -1,3 +1,3 @@
 ﻿
-using var game = new MgGame.GameInstance();
+using var game = new Foxtale.GameInstance();
 game.Run();

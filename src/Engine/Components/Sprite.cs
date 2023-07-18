@@ -1,16 +1,18 @@
+using Foxtale.Engine.Entities;
+using Foxtale.Engine.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MgGame.Engine.Entities;
-using MgGame.Engine.Systems;
-using MgGame.Engine.Components.UI;
+using Foxtale.Engine.Components.UI;
+using Foxtale.Engine.Core;
 
-namespace MgGame.Engine.Components;
+namespace Foxtale.Engine.Components;
 
 public class Sprite : IComponent
 {
     public Texture2D Texture { get; set; }
     public IEntity Entity { get; set; }
     public Color RenderTint { get; set; } = Color.White;
+    public Origin2D Origin { get; set; } = Origin2D.TopLeft;
 
     public Sprite()
     {

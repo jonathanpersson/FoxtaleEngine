@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MgGame.Engine.Components.UI;
+namespace Foxtale.Engine.Components.UI;
 
 public interface IStyle
 {

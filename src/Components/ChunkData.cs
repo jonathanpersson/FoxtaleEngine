@@ -1,9 +1,9 @@
+using Foxtale.Engine.Components;
+using Foxtale.Engine.Entities;
+using Foxtale.Systems;
 using Microsoft.Xna.Framework;
-using MgGame.Engine.Entities;
-using MgGame.Engine.Components;
-using MgGame.Systems;
 
-namespace MgGame.Components;
+namespace Foxtale.Components;
 
 public class ChunkData : IComponent
 {

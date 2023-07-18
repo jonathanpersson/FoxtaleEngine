@@ -1,7 +1,7 @@
+using Foxtale.Engine.Entities;
 using Microsoft.Xna.Framework;
-using MgGame.Engine.Entities;
 
-namespace MgGame.Engine.Components;
+namespace Foxtale.Engine.Components;
 
 public interface IComponent
 {

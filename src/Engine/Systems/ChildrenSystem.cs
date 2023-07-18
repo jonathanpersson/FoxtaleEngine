@@ -1,5 +1,5 @@
-using MgGame.Engine.Components;
+using Foxtale.Engine.Components;
 
-namespace MgGame.Engine.Systems;
+namespace Foxtale.Engine.Systems;
 
 public class ChildrenSystem : BaseSystem<Children> { }

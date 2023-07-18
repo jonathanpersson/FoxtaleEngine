@@ -1,8 +1,8 @@
+using Foxtale.Engine.Entities;
+using Foxtale.Engine.Systems;
 using Microsoft.Xna.Framework;
-using MgGame.Engine.Systems;
-using MgGame.Engine.Entities;
 
-namespace MgGame.Engine.Components.Physics;
+namespace Foxtale.Engine.Components.Physics;
 
 public class Collider : IComponent
 {

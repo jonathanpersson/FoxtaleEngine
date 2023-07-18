@@ -1,11 +1,11 @@
-﻿using MgGame.Engine.Components;
-using MgGame.Engine.Systems;
-using MgGame.Engine.Entities;
-using MgGame.Engine.Systems.UI;
+﻿using Foxtale.Engine.Entities;
+using Foxtale.Engine.Systems.UI;
+using Foxtale.Engine.Components;
+using Foxtale.Engine.Systems;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MgGame.Engine.Components.UI;
+namespace Foxtale.Engine.Components.UI;
 
 public abstract class UIComponent : IComponent
 {

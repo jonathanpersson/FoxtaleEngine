@@ -1,11 +1,11 @@
-﻿using MgGame.Engine.Components.UI;
-using MgGame.Engine.Systems;
+﻿using Foxtale.Engine.Systems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Foxtale.Engine.Components.UI;
 
-namespace MgGame.Engine.Systems.UI;
+namespace Foxtale.Engine.Systems.UI;
 
 public class StyleSystem : BaseSystem<Style> { }

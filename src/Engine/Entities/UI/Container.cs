@@ -1,8 +1,8 @@
-﻿using MgGame.Engine.Components;
-using MgGame.Engine.Components.UI;
+﻿using Foxtale.Engine.Components.UI;
 using System.Collections.Generic;
+using Foxtale.Engine.Components;
 
-namespace MgGame.Engine.Entities.UI;
+namespace Foxtale.Engine.Entities.UI;
 
 public class Container : UIEntity
 {

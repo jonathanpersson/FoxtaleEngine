@@ -1,4 +1,4 @@
-﻿namespace MgGame.Engine.Core;
+﻿namespace Foxtale.Engine.Core;
 public enum Axis2D
 {
     X,

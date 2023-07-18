@@ -2,12 +2,13 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.BitmapFonts;
-using MgGame.Engine.Components.UI;
-using MgGame.Engine.Entities.UI;
 using System.Runtime.CompilerServices;
-using MgGame.Engine.Entities.UI.Controls;
+using Foxtale.Engine.Components.UI;
+using Foxtale.Engine.Core;
+using Foxtale.Engine.Entities.UI;
+using Foxtale.Engine.Entities.UI.Controls;
 
-namespace MgGame.Engine.Systems.UI;
+namespace Foxtale.Engine.Systems.UI;
 
 public class UserInterfaceSystem : BaseSystem<UIComponent>
 {
@@ -23,8 +24,6 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
     public static void Initialize(GraphicsDeviceManager graphics)
     {
         Graphics = graphics;
-        testContainer = new Container(new Label(300, 300, "Hello, world!"));
-        testContainer.AddComponent(new Style());
     }
 
     /// <summary>
@@ -34,6 +33,12 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
     public static void LoadContent(BitmapFont font)
     {
         Font = font;
+        testContainer = new Container(
+            new Label(4, 4, "Foxtale Engine Pre-Alpha"),
+            new Image(Graphics.PreferredBackBufferWidth / 2, Graphics.PreferredBackBufferHeight / 2
+                , "Textures/foxtale", 6, Origin2D.MiddleCenter)
+        );
+        testContainer.AddComponent(new Style());
     }
     
     /// <summary>

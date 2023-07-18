@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using MgGame.Engine.Components;
+using Foxtale.Engine.Components;
 
-namespace MgGame.Engine.Entities;
+namespace Foxtale.Engine.Entities;
 
 public interface IEntity
 {

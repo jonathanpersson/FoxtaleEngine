@@ -1,7 +1,7 @@
-using MgGame.Engine.Systems;
-using MgGame.Components;
+using Foxtale.Components;
+using Foxtale.Engine.Systems;
 
-namespace MgGame.Systems;
+namespace Foxtale.Systems;
 
 public class ChunkDataSystem : BaseSystem<ChunkData> { }
 

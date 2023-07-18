@@ -1,7 +1,7 @@
-using MgGame.Engine.Entities;
-using MgGame.Components;
+using Foxtale.Components;
+using Foxtale.Engine.Entities;
 
-namespace MgGame.Entities;
+namespace Foxtale.Entities;
 
 public class Chunk : Entity2D
 {

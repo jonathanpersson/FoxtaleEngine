@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using MgGame.Engine.Entities;
-using MgGame.Engine.Systems;
 using System;
+using Foxtale.Engine.Entities;
+using Foxtale.Engine.Systems;
 
-namespace MgGame.Engine.Components;
+namespace Foxtale.Engine.Components;
 
 public class Children : IComponent
 {
