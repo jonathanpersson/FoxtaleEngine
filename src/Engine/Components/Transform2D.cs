@@ -49,19 +49,19 @@ public class Transform2D : IComponent
     /// Calculate origin from sprite
     /// </summary>
     /// <param name="sprite">Sprite to get origin from</param>
-    public void OriginFromSprite(Sprite sprite)
+    public void OriginFromSprite(ISprite sprite)
     {
         Origin = sprite.Origin switch
         {
             Origin2D.TopLeft => Vector2.Zero,
-            Origin2D.MiddleLeft => new Vector2(0, sprite.Texture.Height / 2),
-            Origin2D.BottomLeft => new Vector2(0, sprite.Texture.Height),
-            Origin2D.TopCenter => new Vector2(sprite.Texture.Width / 2, 0),
-            Origin2D.MiddleCenter => new Vector2(sprite.Texture.Width / 2, sprite.Texture.Height / 2),
-            Origin2D.BottomCenter => new Vector2(sprite.Texture.Width / 2, sprite.Texture.Height),
-            Origin2D.TopRight => new Vector2(sprite.Texture.Width, 0),
-            Origin2D.MiddleRight => new Vector2(sprite.Texture.Width, sprite.Texture.Height / 2),
-            Origin2D.BottomRight => new Vector2(sprite.Texture.Width, sprite.Texture.Height),
+            Origin2D.MiddleLeft => new Vector2(0, sprite.SpriteSize.Y / 2),
+            Origin2D.BottomLeft => new Vector2(0, sprite.SpriteSize.Y),
+            Origin2D.TopCenter => new Vector2(sprite.SpriteSize.X / 2, 0),
+            Origin2D.MiddleCenter => new Vector2(sprite.SpriteSize.X / 2, sprite.SpriteSize.Y / 2),
+            Origin2D.BottomCenter => new Vector2(sprite.SpriteSize.X / 2, sprite.SpriteSize.Y),
+            Origin2D.TopRight => new Vector2(sprite.SpriteSize.X, 0),
+            Origin2D.MiddleRight => new Vector2(sprite.SpriteSize.X, sprite.SpriteSize.Y / 2),
+            Origin2D.BottomRight => new Vector2(sprite.SpriteSize.X, sprite.SpriteSize.Y),
             _ => throw new ArgumentOutOfRangeException()
         };
     }
