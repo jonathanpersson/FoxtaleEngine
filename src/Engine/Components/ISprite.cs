@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Foxtale.Engine.Components;
 
-public interface ISprite
+public interface ISprite : IComponent
 {
     public Texture2D Texture { get; set; }
     public Color RenderTint { get; set; }

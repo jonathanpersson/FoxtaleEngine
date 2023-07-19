@@ -80,6 +80,7 @@ public class GameInstance : Game
 
         Transform2DSystem.Update(gameTime);
         SpriteSystem.Update(gameTime);
+        AnimatedSpriteSystem.Update(gameTime);
         ColliderSystem.Update(gameTime);
         ScriptSystem.Update(gameTime);
 
@@ -98,6 +99,7 @@ public class GameInstance : Game
         //UserInterface.Active.Draw(_spriteBatch);
 
         SpriteSystem.Draw(_spriteBatch);
+        AnimatedSpriteSystem.Draw(_spriteBatch);
 
         _spriteBatch.End();
     }

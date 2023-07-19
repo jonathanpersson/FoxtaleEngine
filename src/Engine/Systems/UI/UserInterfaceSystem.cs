@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.BitmapFonts;
 using System.Runtime.CompilerServices;
+using Foxtale.Engine.Components;
 using Foxtale.Engine.Components.UI;
 using Foxtale.Engine.Core;
 using Foxtale.Engine.Entities.UI;
@@ -33,10 +34,12 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
     public static void LoadContent(BitmapFont font)
     {
         Font = font;
+        //todo: move test stuff to separate scene
         testContainer = new Container(
             new Label(4, 4, "Foxtale Engine Pre-Alpha"),
             new Image(Graphics.PreferredBackBufferWidth / 2, Graphics.PreferredBackBufferHeight / 2
-                , "Textures/foxtale", 6, Origin2D.MiddleCenter)
+                , "Textures/foxtale", 6, Origin2D.MiddleCenter),
+            new AnimatedImage(0, 100, 16, 16, "Textures/testanim", 0.5f, 6)
         );
         testContainer.AddComponent(new Style());
     }
