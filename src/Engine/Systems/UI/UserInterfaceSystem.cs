@@ -37,9 +37,11 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
         //todo: move test stuff to separate scene
         testContainer = new Container(
             new Label(4, 4, "Foxtale Engine Pre-Alpha"),
+            new FrameCounter(4, 38),
             new Image(Graphics.PreferredBackBufferWidth / 2, Graphics.PreferredBackBufferHeight / 2
                 , "Textures/foxtale", 6, Origin2D.MiddleCenter),
-            new AnimatedImage(0, 100, 16, 16, "Textures/testanim", 0.5f, 6)
+            new AnimatedImage(Graphics.PreferredBackBufferWidth / 2, Graphics.PreferredBackBufferHeight / 2 - 100
+                , 78, 64, "Textures/Fox/walk", 10, 6, Origin2D.MiddleCenter)
         );
         testContainer.AddComponent(new Style());
     }

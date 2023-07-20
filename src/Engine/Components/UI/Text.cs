@@ -9,7 +9,7 @@ namespace Foxtale.Engine.Components.UI;
 
 public class Text : UIComponent
 {
-    public string Content { get; }
+    public string Content { get; set; }
 
     public Text(string content)
     {

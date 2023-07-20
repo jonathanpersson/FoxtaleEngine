@@ -10,7 +10,7 @@ namespace Foxtale.Engine.Entities.UI.Controls;
 
 public class Label : UIEntity
 {
-    public Text Text { get;  }
+    public Text Text { get; }
     public Sprite Sprite { get; }
     
     public Label(int x, int y, string text)
