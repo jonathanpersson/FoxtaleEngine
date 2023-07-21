@@ -13,6 +13,7 @@ public class Sprite : IComponent, ISprite
     public Color RenderTint { get; set; } = Color.White;
     public Origin2D Origin { get; set; } = Origin2D.TopLeft;
     public Vector2 SpriteSize => new Vector2(Texture.Width, Texture.Height);
+    public SpriteEffects Effect { get; set; } = SpriteEffects.None;
 
     public Sprite()
     {

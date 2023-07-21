@@ -14,7 +14,7 @@ public class SpriteSystem : BaseSystem<Sprite>
             Transform2D transform = sprite.Entity.GetComponent<Transform2D>();
             sb.Draw(sprite.Texture, transform.Position, sprite.Texture.Bounds, sprite.RenderTint,
                 transform.Rotation, transform.Origin, transform.Scale, 
-                SpriteEffects.None, transform.LayerDepth);
+                sprite.Effect, transform.LayerDepth);
         }
     }
 }

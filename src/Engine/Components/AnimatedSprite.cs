@@ -14,6 +14,7 @@ public class AnimatedSprite : IComponent, ISprite
     public Color RenderTint { get; set; } = Color.White;
     public Origin2D Origin { get; set; } = Origin2D.TopLeft;
     public Vector2 SpriteSize { get; set; }
+    public SpriteEffects Effect { get; set; }
     public Rectangle SourceRectangle { get; private set; }
     public int Frame { get; private set; }
     public float Framerate { get; set; }

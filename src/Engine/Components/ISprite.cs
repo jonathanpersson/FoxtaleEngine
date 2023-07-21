@@ -10,4 +10,5 @@ public interface ISprite : IComponent
     public Color RenderTint { get; set; }
     public Origin2D Origin { get; set; }
     public Vector2 SpriteSize { get; }
+    public SpriteEffects Effect { get; set; }
 }
