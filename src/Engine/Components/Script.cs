@@ -15,4 +15,9 @@ public abstract class Script : IComponent
 
     public void Initialize() { }
     public abstract void Update(GameTime gameTime);
+
+    public void Destroy()
+    {
+        ScriptSystem.RemoveComponent(this);
+    }
 }

@@ -39,6 +39,11 @@ public class Transform2D : IComponent
     public void Initialize() { }
     public void Update(GameTime gameTime) { }
 
+    public void Destroy()
+    {
+        Transform2DSystem.RemoveComponent(this);
+    }
+
     public void Rotate(float deg)
     {
         double d = 1 / 360 * deg;

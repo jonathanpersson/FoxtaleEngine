@@ -23,4 +23,9 @@ public class Style : IComponent, IStyle
 
     public void Initialize() { }
     public void Update(GameTime gameTime) { }
+
+    public void Destroy()
+    {
+        StyleSystem.RemoveComponent(this);
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Foxtale.Engine.Entities;
+using Foxtale.Engine.Entities.Scenes;
 using Foxtale.Engine.Systems;
 using Foxtale.Engine.Systems.UI;
 using Microsoft.Xna.Framework;
@@ -10,14 +11,14 @@ using MonoGame.Extended.BitmapFonts;
 using Foxtale.World;
 using Microsoft.Xna.Framework.Content;
 
-namespace Foxtale;
+namespace Foxtale.Engine.Core;
 
 public class GameInstance : Game
 {
     private static GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    public static Universe2D ActiveUniverse { get; set; }
+    public static Scene2D ActiveScene { get; set; }
     public static ContentManager ContentManager { get; set; }
 
     public GameInstance()
@@ -60,8 +61,6 @@ public class GameInstance : Game
         Console.WriteLine($"Generated world in {sw.ElapsedTicks} ticks ({sw.ElapsedMilliseconds} ms)");
         */
 
-        ActiveUniverse = new Universe2D();
-
         base.Initialize();
     }
 
@@ -71,6 +70,8 @@ public class GameInstance : Game
         //TODO: Load the most essential content here, then
         // load the rest of the content during loading screens
         UserInterfaceSystem.LoadContent(Content.Load<BitmapFont>("Fonts/PressStart2P"));
+        
+        ActiveScene = new Loading(ActiveScene);
     }
 
     protected override void Update(GameTime gameTime)
@@ -85,6 +86,8 @@ public class GameInstance : Game
         ScriptSystem.Update(gameTime);
 
         UserInterfaceSystem.Update(gameTime);
+
+        ActiveScene?.Update(gameTime);
 
         base.Update(gameTime);
     }

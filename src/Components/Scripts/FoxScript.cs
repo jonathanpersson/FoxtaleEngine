@@ -1,4 +1,5 @@
 ﻿using Foxtale.Engine.Components;
+using Foxtale.Engine.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

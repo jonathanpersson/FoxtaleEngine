@@ -27,6 +27,15 @@ public abstract class BaseSystem<T> where T : IComponent
         uninitialized.Enqueue(component);
     }
 
+    /// <summary>
+    /// Remove a component from the system
+    /// </summary>
+    /// <param name="component">Component to remove</param>
+    public static void RemoveComponent(T component)
+    {
+        if (components.Contains(component)) components.Remove(component);
+    }
+
     public static void Initialize() { }
 
     /// <summary>

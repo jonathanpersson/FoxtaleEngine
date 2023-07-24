@@ -14,4 +14,9 @@ public class Fluid : IEnvironment
 
     public void Initialize() { }
     public void Update(GameTime gameTime) { }
+
+    public void Destroy()
+    {
+        throw new System.NotImplementedException();
+    }
 }

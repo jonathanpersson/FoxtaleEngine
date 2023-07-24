@@ -20,7 +20,7 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
 
     public static GraphicsDeviceManager Graphics { get; private set; }
 
-    private static Container testContainer;
+    private static Container infoContainer;
 
     public static void Initialize(GraphicsDeviceManager graphics)
     {
@@ -34,16 +34,10 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
     public static void LoadContent(BitmapFont font)
     {
         Font = font;
-        //todo: move test stuff to separate scene
-        testContainer = new Container(
+        infoContainer = new Container(
             new Label(4, 4, "Foxtale Engine Pre-Alpha"),
-            new FrameCounter(4, 38),
-            new Image(Graphics.PreferredBackBufferWidth / 2, Graphics.PreferredBackBufferHeight / 2
-                , "Textures/foxtale", 6, Origin2D.MiddleCenter),
-            new AnimatedImage(Graphics.PreferredBackBufferWidth / 2, Graphics.PreferredBackBufferHeight / 2 - 100
-                , 78, 64, "Textures/Fox/walk", 10, 6, Origin2D.MiddleCenter)
+            new FrameCounter(4, 32)
         );
-        testContainer.AddComponent(new Style());
     }
     
     /// <summary>

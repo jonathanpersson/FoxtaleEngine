@@ -19,4 +19,9 @@ public abstract class UIComponent : IComponent
     public virtual void Initialize() { }
 
     public void Update(GameTime gameTime) { }
+
+    public void Destroy()
+    {
+        UserInterfaceSystem.RemoveComponent(this);
+    }
 }

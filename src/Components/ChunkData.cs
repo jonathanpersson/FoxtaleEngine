@@ -28,4 +28,9 @@ public class ChunkData : IComponent
 
     public void Initialize() { }
     public void Update(GameTime gameTime) { }
+
+    public void Destroy()
+    {
+        ChunkDataSystem.RemoveComponent(this);
+    }
 }

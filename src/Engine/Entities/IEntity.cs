@@ -11,4 +11,10 @@ public interface IEntity
     public void AddComponent(IComponent component);
     public T GetComponent<T>() where T : IComponent;
     public bool TryGetComponent<T>(out T component) where T : IComponent;
+
+    public void Destroy()
+    {
+        foreach (IComponent component in Components) component.Destroy();
+        Components.Clear();
+    }
 }

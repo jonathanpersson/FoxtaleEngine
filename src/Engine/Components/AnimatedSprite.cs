@@ -41,4 +41,9 @@ public class AnimatedSprite : IComponent, ISprite
         SourceRectangle = sourceRectangle;
         _timer = 0;
     }
+
+    public void Destroy()
+    {
+        AnimatedSpriteSystem.RemoveComponent(this);
+    }
 }

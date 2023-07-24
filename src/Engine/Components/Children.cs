@@ -54,4 +54,11 @@ public class Children : IComponent
     {
         return Nodes.Remove(child);
     }
+
+    public void Destroy()
+    {
+        foreach (IEntity entity in Nodes) entity.Destroy();
+        Nodes.Clear();
+        ChildrenSystem.RemoveComponent(this);
+    }
 }
