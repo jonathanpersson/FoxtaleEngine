@@ -33,7 +33,8 @@ public class Label : UIEntity
         RenderTarget2D result = new(UserInterfaceSystem.Graphics.GraphicsDevice,
             (int)texSize.X, (int)texSize.Y);
         UserInterfaceSystem.Graphics.GraphicsDevice.SetRenderTarget(result);
-
+        UserInterfaceSystem.Graphics.GraphicsDevice.Clear(Color.Transparent);
+        
         sb.Begin();
         sb.DrawString(UserInterfaceSystem.Font, Text.Content, Vector2.Zero, Color.White);
         sb.End();

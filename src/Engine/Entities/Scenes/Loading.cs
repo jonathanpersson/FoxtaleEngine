@@ -16,13 +16,14 @@ public class Loading : Scene2D
     {
         _afterLoading = afterLoading;
         _timer = 0;
+        GameInstance.ClearColor = Color.FromNonPremultiplied(35, 29, 26, 255);
         Container container = new(
             new Image(UserInterfaceSystem.Graphics.PreferredBackBufferWidth / 2, 
                 UserInterfaceSystem.Graphics.PreferredBackBufferHeight / 2
-                , "Textures/foxtale", 6, Origin2D.MiddleCenter),
+                , "Textures/foxtale", 6, Origin2D.MiddleCenter)/*,
             new AnimatedImage(UserInterfaceSystem.Graphics.PreferredBackBufferWidth / 2, 
                 UserInterfaceSystem.Graphics.PreferredBackBufferHeight / 2 - 100
-                , 78, 64, "Textures/Fox/walk", 10, 6, Origin2D.MiddleCenter)
+                , 78, 64, "Textures/Fox/walk", 10, 6, Origin2D.MiddleCenter)*/
         );
         container.AddComponent(new Style());
         Content.Add(container);
@@ -34,5 +35,6 @@ public class Loading : Scene2D
         if (_timer < 4) return;
         Destroy();
         GameInstance.ActiveScene = _afterLoading;
+        GameInstance.ClearColor = Color.Black;
     }
 }

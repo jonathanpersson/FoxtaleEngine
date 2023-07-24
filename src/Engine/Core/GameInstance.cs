@@ -20,6 +20,7 @@ public class GameInstance : Game
 
     public static Scene2D ActiveScene { get; set; }
     public static ContentManager ContentManager { get; set; }
+    public static Color ClearColor { get; set; } = Color.Black;
 
     public GameInstance()
     {
@@ -94,7 +95,7 @@ public class GameInstance : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.Black);
+        GraphicsDevice.Clear(ClearColor);
 
         _spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
