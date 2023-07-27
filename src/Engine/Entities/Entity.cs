@@ -42,7 +42,7 @@ public abstract class Entity : IEntity
     {
         foreach (IComponent component in Components)
         {
-            if (component is T) return (T)component;
+            if (component is T comp) return comp;
         }
         throw new MissingComponentException(this, typeof(T));
     }
