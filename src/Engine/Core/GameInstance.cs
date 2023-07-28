@@ -86,9 +86,10 @@ public class GameInstance : Game
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
-
+        Input.Update();
+        
+        if (Input.KeyDown(Keys.Escape)) Exit();
+        
         Transform2DSystem.Update(gameTime);
         SpriteSystem.Update(gameTime);
         AnimatedSpriteSystem.Update(gameTime);

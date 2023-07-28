@@ -44,6 +44,30 @@ public class Transform2D : IComponent
         Transform2DSystem.RemoveComponent(this);
     }
 
+    /// <summary>
+    /// Move transform
+    /// </summary>
+    /// <param name="x">Distance to move transform on x-axis</param>
+    /// <param name="y">Distance to move transform on y-axis</param>
+    public void Move(float x, float y)
+    {
+        Vector2 pos = Position;
+        pos.X += x;
+        pos.Y += y;
+        Position = pos;
+    }
+    
+    /// <summary>
+    /// Move transform, taking delta time into account
+    /// </summary>
+    /// <param name="x">Distance to move on x-axis</param>
+    /// <param name="y">Distance to move on y-axis</param>
+    /// <param name="gameTime">GameTime object containing delta information</param>
+    public void Move(float x, float y, GameTime gameTime)
+    {
+        Move((float)(x * gameTime.ElapsedGameTime.TotalSeconds), (float)(y * gameTime.ElapsedGameTime.TotalSeconds));
+    }
+
     public void Rotate(float deg)
     {
         double d = 1 / 360 * deg;

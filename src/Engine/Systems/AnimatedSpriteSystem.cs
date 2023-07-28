@@ -14,7 +14,7 @@ public class AnimatedSpriteSystem : BaseSystem<AnimatedSprite>
             Transform2D transform = sprite.Entity.GetComponent<Transform2D>();
             sb.Draw(sprite.Texture, transform.Position, sprite.SourceRectangle, sprite.RenderTint,
                 transform.Rotation, transform.Origin, transform.Scale, 
-                SpriteEffects.None, transform.LayerDepth);
+                sprite.Effect, transform.LayerDepth);
         }
     }
 }
