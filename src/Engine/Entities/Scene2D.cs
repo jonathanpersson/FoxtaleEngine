@@ -7,6 +7,7 @@ namespace Foxtale.Engine.Entities;
 
 public abstract class Scene2D : Entity2D
 {
+    private bool _active = false;
     public Children Content { get; set; }
     public IEnvironment Environment { get; }
 
@@ -42,6 +43,31 @@ public abstract class Scene2D : Entity2D
         AddComponent(Environment);
     }
 
+    public void Load()
+    {
+        if (_active) return;
+        Activate();
+        _active = true;
+    }
+
+    public void Unload()
+    {
+        if (!_active) return;
+        Deactivate();
+        Destroy();
+        _active = false;
+    }
+
+    /// <summary>
+    /// Runs when scene is activated, create and load content here
+    /// </summary>
+    protected abstract void Activate();
+    
+    /// <summary>
+    /// Runs when scene is deactivated, clean up scene here
+    /// </summary>
+    protected abstract void Deactivate();
+
     public abstract void Update(GameTime gameTime);
 
     public void Destroy()
@@ -49,5 +75,6 @@ public abstract class Scene2D : Entity2D
         //todo: must destroy all active entities in scene
         Content.Destroy();
         Content.Nodes.Clear();
+        Deactivate();
     }
 }

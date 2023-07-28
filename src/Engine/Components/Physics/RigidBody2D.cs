@@ -21,7 +21,7 @@ public class RigidBody2D : IPhysicsObject2D
 
     public void Initialize()
     {
-        _environment = GameInstance.ActiveScene.Environment;
+        _environment = GameInstance.ActiveSceneEnvironment;
         Density = Mass / Bounds.Area;
         //todo: https://en.wikipedia.org/wiki/Terminal_velocity
         // MaxVelocity = Math.Sqrt((2 * Mass * IPhysicsObject2D.Gravity) / (_environment.Density * ));

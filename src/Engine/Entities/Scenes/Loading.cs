@@ -16,6 +16,10 @@ public class Loading : Scene2D
     {
         _afterLoading = afterLoading;
         _timer = 0;
+    }
+
+    protected override void Activate()
+    {
         GameInstance.ClearColor = Color.FromNonPremultiplied(35, 29, 26, 255);
         Container container = new(
             new Image(UserInterfaceSystem.Graphics.PreferredBackBufferWidth / 2, 
@@ -29,12 +33,15 @@ public class Loading : Scene2D
         Content.Add(container);
     }
 
+    protected override void Deactivate()
+    {
+        GameInstance.ClearColor = Color.Black;
+    }
+
     public override void Update(GameTime gameTime)
     {
         _timer += gameTime.ElapsedGameTime.TotalSeconds;
         if (_timer < 4) return;
-        Destroy();
-        GameInstance.ActiveScene = _afterLoading;
-        GameInstance.ClearColor = Color.Black;
+        GameInstance.SetScene(_afterLoading);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using Foxtale.Engine.Components.Physics;
 using Foxtale.Engine.Entities;
 using Foxtale.Engine.Entities.Scenes;
 using Foxtale.Engine.Systems;
@@ -18,7 +19,9 @@ public class GameInstance : Game
     private static GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    public static Scene2D ActiveScene { get; set; }
+    protected static Scene2D ActiveScene { get; set; }
+    public static IEnvironment ActiveSceneEnvironment => ActiveScene.Environment;
+    
     public static ContentManager ContentManager { get; set; }
     public static Color ClearColor { get; set; } = Color.Black;
 
@@ -27,6 +30,12 @@ public class GameInstance : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+    }
+
+    public void Run(Scene2D scene)
+    {
+        ActiveScene = scene;
+        Run();
     }
 
     protected override void Initialize()
@@ -72,7 +81,7 @@ public class GameInstance : Game
         // load the rest of the content during loading screens
         UserInterfaceSystem.LoadContent(Content.Load<BitmapFont>("Fonts/PressStart2P"));
         
-        ActiveScene = new Loading(ActiveScene);
+        SetScene(new Loading(ActiveScene));
     }
 
     protected override void Update(GameTime gameTime)
@@ -106,5 +115,12 @@ public class GameInstance : Game
         AnimatedSpriteSystem.Draw(_spriteBatch);
 
         _spriteBatch.End();
+    }
+
+    public static void SetScene(Scene2D scene)
+    {
+        ActiveScene?.Unload();
+        ActiveScene = scene;
+        ActiveScene.Load();
     }
 }

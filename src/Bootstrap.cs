@@ -1,3 +1,6 @@
 ﻿
-using var game = new Foxtale.Engine.Core.GameInstance();
-game.Run();
+using Foxtale.Engine.Core;
+using Foxtale.Entities.Scenes;
+
+using var game = new GameInstance();
+game.Run(new Test());
