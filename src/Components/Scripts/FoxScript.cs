@@ -19,11 +19,11 @@ public class FoxScript : Script
     {
         WalkingAnimation = GameInstance.ContentManager.Load<Texture2D>("Textures/Fox/walk");
         RunningAnimation = GameInstance.ContentManager.Load<Texture2D>("Textures/Fox/run");
-        IdleAnimation = GameInstance.ContentManager.Load<Texture2D>("Textures/Fox/stand");
+        IdleAnimation = GameInstance.ContentManager.Load<Texture2D>("Textures/Fox/standing");
         JumpAnimation = GameInstance.ContentManager.Load<Texture2D>("Textures/Fox/pounce");
         LandingAnimation = GameInstance.ContentManager.Load<Texture2D>("Textures/Fox/landing");
         SniffAnimation = GameInstance.ContentManager.Load<Texture2D>("Textures/Fox/sniff");
-        HangAnimation = GameInstance.ContentManager.Load<Texture2D>("Textures/Fox/hanging");
+        HangAnimation = GameInstance.ContentManager.Load<Texture2D>("Textures/Fox/hang");
     }
 
     public override void Update(GameTime gameTime)

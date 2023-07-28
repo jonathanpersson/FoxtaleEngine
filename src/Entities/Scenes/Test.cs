@@ -12,8 +12,8 @@ public class Test : Scene2D
 
     protected override void Activate()
     {
-        
-    }
+        Content.Add(new Fox());
+}
 
     protected override void Deactivate()
     {
