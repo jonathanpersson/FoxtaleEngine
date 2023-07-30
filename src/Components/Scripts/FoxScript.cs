@@ -11,6 +11,8 @@ public class FoxScript : Script
 {
     private float _maxSpeed = 80;
     private float _speed = 0;
+    private double _jumpTimer = 0;
+    private bool _jumping = false;
 
     public Fox Fox { get; set; }
     public Texture2D WalkingAnimation { get; }
@@ -35,28 +37,63 @@ public class FoxScript : Script
 
     public override void Update(GameTime gameTime)
     {
-        Move();
-        if (_speed != 0) Fox.Transform.Move(_speed, 0, gameTime);
+        Move(gameTime);
+        Jump(gameTime);
     }
 
-    private void Move()
+    private void Move(GameTime gameTime)
     {
         if (Input.KeyDown(Keys.A) || Input.KeyDown(Keys.Left))
         {
             _speed = -_maxSpeed;
-            if (Fox.Sprite.Texture != RunningAnimation) Fox.Sprite.Texture = RunningAnimation;
+            if (Fox.Sprite.Texture != RunningAnimation && !_jumping) Fox.Sprite.Texture = RunningAnimation;
             if (Fox.Sprite.Effect != SpriteEffects.FlipHorizontally) Fox.Sprite.Effect = SpriteEffects.FlipHorizontally;
         }
         else if (Input.KeyDown(Keys.D) || Input.KeyDown(Keys.Right))
         {
             _speed = _maxSpeed;
-            if (Fox.Sprite.Texture != RunningAnimation) Fox.Sprite.Texture = RunningAnimation;
+            if (Fox.Sprite.Texture != RunningAnimation && !_jumping) Fox.Sprite.Texture = RunningAnimation;
             if (Fox.Sprite.Effect != SpriteEffects.None) Fox.Sprite.Effect = SpriteEffects.None;
         }
         else
         {
             _speed = 0;
-            if (Fox.Sprite.Texture != IdleAnimation) Fox.Sprite.Texture = IdleAnimation;
+            if (Fox.Sprite.Texture != IdleAnimation && !_jumping) Fox.Sprite.Texture = IdleAnimation;
         }
+        if (_speed != 0) Fox.Transform.Move(_speed, 0, gameTime);
+    }
+
+    private void Jump(GameTime gameTime)
+    {
+        if (Input.KeyDown(Keys.Space) && !_jumping)
+        {
+            _jumping = true;
+            return;
+        }
+
+        if (!_jumping) return;
+
+        Fox.Sprite.Texture = _jumpTimer switch
+        {
+            < 0.75 => JumpAnimation,
+            >= 0.75 => LandingAnimation,
+            _ => Fox.Sprite.Texture
+        };
+
+        switch (_jumpTimer)
+        {
+            case < 0.75:
+                Fox.Transform.Move(0, -_maxSpeed * 2, gameTime);
+                break;
+            case < 1.5:
+                Fox.Transform.Move(0, _maxSpeed * 2, gameTime);
+                break;
+            default:
+                _jumping = false;
+                _jumpTimer = 0;
+                break;
+        }
+
+        _jumpTimer += gameTime.ElapsedGameTime.TotalSeconds;
     }
 }
