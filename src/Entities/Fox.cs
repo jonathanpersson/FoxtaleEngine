@@ -20,6 +20,7 @@ public class Fox : Entity2D
             Origin = Origin2D.BottomCenter
         };
         Transform.Position = new Vector2(200, 400);
+        Transform.Scale = new Vector2(2, 2);
         AddComponent(Sprite);
         AddComponent(Script);
     }
