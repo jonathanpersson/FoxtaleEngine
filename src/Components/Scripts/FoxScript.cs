@@ -9,7 +9,7 @@ namespace Foxtale.Components.Scripts;
 
 public class FoxScript : Script
 {
-    private float _maxSpeed = 80;
+    private const float _maxSpeed = 120;
     private float _speed = 0;
     private double _jumpTimer = 0;
     private bool _jumping = false;

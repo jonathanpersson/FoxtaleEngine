@@ -9,10 +9,12 @@ public class Button : UIEntity
 {
     public Text Text { get;  }
     public Sprite Sprite { get; }
-    public event EventHandler OnClick;
+    public Event OnClick;
     
-    public Button(int x, int y, string text)
+    public Button(int x, int y, string text, EventHandler onClick)
     {
+        OnClick = new Event(onClick);
+        AddComponent(OnClick);
         Transform.Position = new Vector2(x, y);
         Render();
     }
