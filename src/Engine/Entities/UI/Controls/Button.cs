@@ -10,7 +10,7 @@ public class Button : UIEntity
     public Text Text { get;  }
     public Sprite Sprite { get; }
     public Event OnClick;
-    
+
     public Button(int x, int y, string text, EventHandler onClick)
     {
         OnClick = new Event(onClick);

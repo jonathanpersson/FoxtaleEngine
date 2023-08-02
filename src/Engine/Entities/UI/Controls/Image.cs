@@ -17,6 +17,7 @@ public class Image : UIEntity
         Transform.Position = new Vector2(x, y);
         Transform.Scale = new Vector2(scale, scale);
         Sprite.Texture = GameInstance.ContentManager.Load<Texture2D>(texture);
+        Transform.Size = new Vector2(Sprite.Texture.Width, Sprite.Texture.Height);
         Transform.OriginFromSprite(Sprite);
     }
 }

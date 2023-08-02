@@ -19,5 +19,6 @@ public class AnimatedImage : UIEntity
         Transform.Position = new Vector2(x, y);
         Transform.Scale = new Vector2(scale, scale);
         Transform.OriginFromSprite(Sprite);
+        Transform.Size = new Vector2(width, height);
     }
 }

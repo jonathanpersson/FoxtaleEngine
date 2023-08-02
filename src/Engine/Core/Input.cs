@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Foxtale.Engine.Core;
@@ -36,5 +37,10 @@ public static class Input
     public static bool KeyReleased(Keys key)
     {
         return _currentKeyboardState.IsKeyUp(key) && _previousKeyboardState.IsKeyDown(key);
+    }
+
+    public static Vector2 GetMousePosition()
+    {
+        return new Vector2(_currentMouseState.X, _currentMouseState.Y);
     }
 }

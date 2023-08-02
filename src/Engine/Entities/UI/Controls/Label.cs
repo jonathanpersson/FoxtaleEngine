@@ -29,6 +29,7 @@ public class Label : UIEntity
     public void Render()
     {
         Vector2 texSize = UserInterfaceSystem.Font.MeasureString(Text.Content);
+        Transform.Size = texSize;
         SpriteBatch sb = new(UserInterfaceSystem.Graphics.GraphicsDevice);
         RenderTarget2D result = new(UserInterfaceSystem.Graphics.GraphicsDevice,
             (int)texSize.X, (int)texSize.Y);

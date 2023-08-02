@@ -11,7 +11,10 @@ public class Transform2D : IComponent
 {
     public Vector2 Position { get; set; } = Vector2.Zero;
     public Vector2 Scale { get; set; } = Vector2.One;
+    public Vector2 Size { get; set; } = Vector2.Zero;
     public Vector2 Origin { get; set; } = Vector2.Zero;
+    public Rectangle Projection => 
+        new Rectangle((int)Position.X, (int)Position.Y, (int)(Scale.X * Size.X), (int)(Scale.Y * Size.Y));
     public float Rotation { get; private set; } = 0;
     public float LayerDepth { get; set; } = 0;
     public IEntity Entity { get; set; }
@@ -93,5 +96,10 @@ public class Transform2D : IComponent
             Origin2D.BottomRight => new Vector2(sprite.SpriteSize.X, sprite.SpriteSize.Y),
             _ => throw new ArgumentOutOfRangeException()
         };
+    }
+
+    public bool Contains(Vector2 point)
+    {
+        return Projection.Contains(point);
     }
 }
