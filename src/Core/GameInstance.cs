@@ -79,6 +79,7 @@ public class GameInstance : Game
         if (Input.KeyDown(Keys.Escape)) Exit();
         
         Transform2DSystem.Update(gameTime);
+        AnimationSetSystem.Update(gameTime);
         SpriteSystem.Update(gameTime);
         AnimatedSpriteSystem.Update(gameTime);
         ColliderSystem.Update(gameTime);
@@ -99,7 +100,7 @@ public class GameInstance : Game
 
         // TODO: Add your drawing code here
         //UserInterface.Active.Draw(_spriteBatch);
-
+        
         SpriteSystem.Draw(_spriteBatch);
         AnimatedSpriteSystem.Draw(_spriteBatch);
 

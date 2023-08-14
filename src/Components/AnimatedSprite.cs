@@ -15,9 +15,10 @@ public class AnimatedSprite : IComponent, ISprite
     public Origin2D Origin { get; set; } = Origin2D.TopLeft;
     public Vector2 SpriteSize { get; set; }
     public SpriteEffects Effect { get; set; }
-    public Rectangle SourceRectangle { get; private set; }
-    public int Frame { get; private set; }
+    public Rectangle SourceRectangle { get; set; }
     public float Framerate { get; set; }
+    public int Frames { get; set; }
+    public int Frame { get; set; }
 
     public AnimatedSprite(Texture2D texture, int width, int  height, float framerate)
     {
@@ -25,6 +26,7 @@ public class AnimatedSprite : IComponent, ISprite
         SpriteSize = new Vector2(width, height);
         SourceRectangle = new Rectangle(0, 0, width, height);
         Framerate = framerate;
+        Frames = texture.Width / width;
         AnimatedSpriteSystem.AddComponent(this);
         _timer = 0;
     }
@@ -36,7 +38,11 @@ public class AnimatedSprite : IComponent, ISprite
         _timer += gameTime.ElapsedGameTime.TotalSeconds;
         if (_timer < 1 / Framerate) return;
         Rectangle sourceRectangle = SourceRectangle;
-        if (SourceRectangle.X + SpriteSize.X >= Texture.Width) sourceRectangle.X = 0;
+        if (++Frame >= Frames)
+        {
+            sourceRectangle.X = 0;
+            Frame = 0;
+        }
         else sourceRectangle.X += (int)SpriteSize.X;
         SourceRectangle = sourceRectangle;
         _timer = 0;
