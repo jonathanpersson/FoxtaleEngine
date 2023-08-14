@@ -109,5 +109,6 @@ public class AnimationSet : IComponent
         Sprite.Framerate = anim.Framerate;
         Sprite.Frames = anim.Frames;
         Sprite.Frame = 0;
+        ActiveAnimation = index;
     }
 }
