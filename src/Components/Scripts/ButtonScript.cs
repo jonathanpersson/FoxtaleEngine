@@ -29,7 +29,12 @@ public class ButtonScript : Script
             }
             else if (_clicked) Click();
             else _clicked = false;
-        } else if (Button.Sprite.Frame != 0) Button.Sprite.Frame = 0;
+        } 
+        else if (Button.Sprite.Frame != 0)
+        {
+            Button.Sprite.Frame = 0;
+            _clicked = false;
+        }
     }
 
     private void Click()
