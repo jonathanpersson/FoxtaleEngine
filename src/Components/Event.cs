@@ -24,4 +24,9 @@ public class Event : IComponent
     {
         EventSystem.RemoveComponent(this);
     }
+
+    public void Call()
+    {
+        if (Handler != null) Handler.Invoke(Entity, new EventArgs());
+    }
 }

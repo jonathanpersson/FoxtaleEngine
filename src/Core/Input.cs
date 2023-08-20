@@ -17,6 +17,9 @@ public static class Input
     {
         _previousKeyboardState = _currentKeyboardState;
         _currentKeyboardState = Keyboard.GetState();
+        _previousMouseState = _currentMouseState;
+        _currentMouseState = Mouse.GetState();
+        //todo: gamepad state
     }
 
     public static bool KeyDown(Keys key)
@@ -42,5 +45,20 @@ public static class Input
     public static Vector2 GetMousePosition()
     {
         return new Vector2(_currentMouseState.X, _currentMouseState.Y);
+    }
+
+    public static bool LeftMouseDown()
+    {
+        return _currentMouseState.LeftButton == ButtonState.Pressed;
+    }
+
+    public static bool RightMouseDown()
+    {
+        return _currentMouseState.RightButton == ButtonState.Pressed;
+    }
+
+    public static bool MiddleMouseDown()
+    {
+        return _currentMouseState.MiddleButton == ButtonState.Pressed;
     }
 }
