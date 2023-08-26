@@ -10,6 +10,11 @@ public class Event : IComponent
     public event EventHandler Handler;
     public IEntity Entity { get; set; }
 
+    public Event()
+    {
+        EventSystem.AddComponent(this);
+    }
+    
     public Event(EventHandler handler)
     {
         Handler += handler;
@@ -25,8 +30,13 @@ public class Event : IComponent
         EventSystem.RemoveComponent(this);
     }
 
-    public void Call()
+    public void Call(EventArgs args = null)
     {
-        if (Handler != null) Handler.Invoke(Entity, new EventArgs());
+        Handler?.Invoke(Entity, args ?? EventArgs.Empty);
+    }
+
+    public void AddHandler(EventHandler handler)
+    {
+        Handler += handler;
     }
 }
