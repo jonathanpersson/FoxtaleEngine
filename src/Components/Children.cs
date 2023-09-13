@@ -37,13 +37,6 @@ public class Children : IComponent
         ChildrenSystem.AddComponent(this);
     }
 
-    public void Initialize()
-    {
-
-    }
-
-    public void Update(GameTime gameTime) { }
-
     public void Add(IEntity child)
     {
         Nodes.Add(child);

@@ -19,9 +19,6 @@ public class Style : IComponent, IStyle
         StyleSystem.AddComponent(this);
     }
 
-    public void Initialize() { }
-    public void Update(GameTime gameTime) { }
-
     public void Destroy()
     {
         StyleSystem.RemoveComponent(this);

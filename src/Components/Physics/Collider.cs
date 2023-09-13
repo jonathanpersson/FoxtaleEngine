@@ -13,9 +13,6 @@ public class Collider : IComponent
         ColliderSystem.AddComponent(this);
     }
 
-    public void Initialize() { }
-    public void Update(GameTime gameTime) { }
-
     public void Destroy()
     {
         throw new System.NotImplementedException();

@@ -26,9 +26,6 @@ public class Sprite : IComponent, ISprite
         SpriteSystem.AddComponent(this);
     }
 
-    public void Initialize() { }
-    public void Update(GameTime gameTime) { }
-
     public void Destroy()
     {
         SpriteSystem.RemoveComponent(this);

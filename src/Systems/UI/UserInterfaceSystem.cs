@@ -32,8 +32,8 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
     {
         Font = font;
         infoContainer = new Container(
-            new Label(4, 4, "Foxtale Engine Pre-Alpha"),
-            new FrameCounter(4, 32)
+            new Label(4, 4, $"Foxtale Engine Pre-Alpha"),
+            new FrameCounter(4, 16)
         );
     }
     

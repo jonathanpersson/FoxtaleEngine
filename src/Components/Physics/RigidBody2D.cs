@@ -26,8 +26,6 @@ public class RigidBody2D : IPhysicsObject2D
         // MaxVelocity = Math.Sqrt((2 * Mass * IPhysicsObject2D.Gravity) / (_environment.Density * ));
     }
 
-    public void Update(GameTime gameTime) { }
-
     public void Destroy()
     {
         RigidBodySystem.RemoveComponent(this);

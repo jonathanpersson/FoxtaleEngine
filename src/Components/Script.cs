@@ -13,7 +13,8 @@ public abstract class Script : IComponent
         ScriptSystem.AddComponent(this);
     }
 
-    public void Initialize() { }
+    public virtual void Initialize() { }
+
     public abstract void Update(GameTime gameTime);
 
     public void Destroy()

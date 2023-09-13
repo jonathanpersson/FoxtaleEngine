@@ -1,10 +1,19 @@
 using Foxtale.Components;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Foxtale.Systems;
 
 public class AnimatedSpriteSystem : BaseSystem<AnimatedSprite>
 {
+    public static void Update(GameTime gameTime)
+    {
+        foreach (AnimatedSprite component in components)
+        {
+            component.Update(gameTime);
+        }
+    }
+
     public static void Draw(SpriteBatch sb)
     {
         foreach (AnimatedSprite sprite in components)

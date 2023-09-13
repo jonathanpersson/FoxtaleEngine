@@ -1,4 +1,5 @@
-﻿using Foxtale.Components.Physics;
+﻿using Foxtale.Components;
+using Foxtale.Components.Physics;
 using Foxtale.Entities;
 using Foxtale.Entities.Scenes;
 using Foxtale.Systems;
@@ -52,13 +53,6 @@ public class GameInstance : Game
         // initialize UI system
         UserInterfaceSystem.Initialize(_graphics);
 
-
-        // init systems here
-        Transform2DSystem.Initialize();
-        SpriteSystem.Initialize();
-        ColliderSystem.Initialize();
-        ScriptSystem.Initialize();
-
         base.Initialize();
     }
 
@@ -78,14 +72,9 @@ public class GameInstance : Game
         
         if (Input.KeyDown(Keys.Escape)) Exit();
         
-        Transform2DSystem.Update(gameTime);
-        AnimationSetSystem.Update(gameTime);
-        SpriteSystem.Update(gameTime);
-        AnimatedSpriteSystem.Update(gameTime);
-        ColliderSystem.Update(gameTime);
         ScriptSystem.Update(gameTime);
-
-        UserInterfaceSystem.Update(gameTime);
+        AnimationSetSystem.InitializeComponents();
+        AnimatedSpriteSystem.Update(gameTime);
 
         ActiveScene?.Update(gameTime);
 
@@ -103,6 +92,7 @@ public class GameInstance : Game
         
         SpriteSystem.Draw(_spriteBatch);
         AnimatedSpriteSystem.Draw(_spriteBatch);
+        TextureStackSystem.Draw(_spriteBatch);
 
         _spriteBatch.End();
     }

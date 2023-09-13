@@ -41,8 +41,6 @@ public class AnimatedSprite : IComponent, ISprite
         AnimatedSpriteSystem.AddComponent(this);
         _timer = 0;
     }
-    
-    public void Initialize() { }
 
     public void Update(GameTime gameTime)
     {

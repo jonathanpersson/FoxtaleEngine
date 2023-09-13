@@ -21,10 +21,6 @@ public class Event : IComponent
         EventSystem.AddComponent(this);
     }
 
-    public void Initialize() { }
-
-    public void Update(GameTime gameTime) { }
-
     public void Destroy()
     {
         EventSystem.RemoveComponent(this);

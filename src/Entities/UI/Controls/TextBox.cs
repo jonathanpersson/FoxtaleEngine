@@ -8,18 +8,15 @@ public class TextBox : UIEntity
 {
     public Text Content { get; }
     public Event OnInput { get; }
-    public Event OnClick { get; }
     public TextBoxScript Script { get; }
 
     public TextBox(string content = null)
     {
         Content = new Text(content ?? string.Empty);
         OnInput = new Event();
-        OnClick = new Event();
         Script = new TextBoxScript(this);
         AddComponent(Content);
         AddComponent(OnInput);
-        AddComponent(OnClick);
         AddComponent(Script);
     }
 }

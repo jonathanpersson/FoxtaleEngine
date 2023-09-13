@@ -38,9 +38,6 @@ public class Transform2D : IComponent
         Transform2DSystem.AddComponent(this);
     }
 
-    public void Initialize() { }
-    public void Update(GameTime gameTime) { }
-
     public void Destroy()
     {
         Transform2DSystem.RemoveComponent(this);

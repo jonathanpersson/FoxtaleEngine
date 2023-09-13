@@ -40,8 +40,6 @@ public class AnimationSet : IComponent
         Atlas();
     }
 
-    public void Update(GameTime gameTime) { }
-
     public void Destroy()
     {
         AnimationSetSystem.RemoveComponent(this);
