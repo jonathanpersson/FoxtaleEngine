@@ -16,16 +16,19 @@ public class TextureStack : IComponent
     public TextureStack()
     {
         Textures = new List<Texture2D>();
+        TextureStackSystem.AddComponent(this);
     }
 
     public TextureStack(IEnumerable<Texture2D> textures)
     {
         Textures = new List<Texture2D>(textures);
+        TextureStackSystem.AddComponent(this);
     }
 
     public TextureStack(params Texture2D[] textures)
     {
         Textures = new List<Texture2D>(textures);
+        TextureStackSystem.AddComponent(this);
     }
 
     public void Destroy()
