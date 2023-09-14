@@ -16,12 +16,15 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
     public static BitmapFont Font { get; private set; }
 
     public static GraphicsDeviceManager Graphics { get; private set; }
+    
+    public static GameWindow Window { get; private set; }
 
     private static Container infoContainer;
 
-    public static void Initialize(GraphicsDeviceManager graphics)
+    public static void Initialize(GraphicsDeviceManager graphics, GameWindow window)
     {
         Graphics = graphics;
+        Window = window;
     }
 
     /// <summary>

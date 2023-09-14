@@ -51,7 +51,7 @@ public class GameInstance : Game
         ContentManager = Content;
 
         // initialize UI system
-        UserInterfaceSystem.Initialize(_graphics);
+        UserInterfaceSystem.Initialize(_graphics, Window);
 
         base.Initialize();
     }
