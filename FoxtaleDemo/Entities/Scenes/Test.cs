@@ -19,7 +19,8 @@ public class Test : Scene2D
             new Button(500, 700, "Test Button", (object? sender, EventArgs e) =>
             {
                 Console.WriteLine("Hello world!");
-            })
+            }),
+            new TextBox(500, 600, 10, 14, "test")
         ));
 }
 
