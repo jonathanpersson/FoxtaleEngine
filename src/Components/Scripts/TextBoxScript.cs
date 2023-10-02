@@ -113,7 +113,7 @@ public class TextBoxScript : Script
         Rectangle box = new(0, 0, (int)Text.Transform.Size.X, (int)Text.Transform.Size.Y);
 
         sb.Begin();
-        sb.DrawString(UserInterfaceSystem.Font, text, new Vector2(2, 2), Color.Black);
+        sb.DrawString(UserInterfaceSystem.Font, text, new Vector2(2, 10), Color.Black);
         sb.End();
         
         UserInterfaceSystem.Graphics.GraphicsDevice.SetRenderTarget(null);

@@ -16,11 +16,11 @@ public class Test : Scene2D
     {
         Content.Add(new Fox());
         Content.Add(new Container(
-            new Button(500, 700, "Test Button", (object? sender, EventArgs e) =>
+            new Button(500, 600, "Test Button", (object? sender, EventArgs e) =>
             {
                 Console.WriteLine("Hello world!");
             }),
-            new TextBox(500, 600, 10, 14, "test")
+            new TextBox(300, 600, 10, 14, "test")
         ));
 }
 

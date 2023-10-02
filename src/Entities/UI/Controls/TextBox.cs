@@ -30,7 +30,7 @@ public class TextBox : UIEntity
     {
         Transform.Position = new Vector2(x, y);
         Transform.Size = new Vector2(4 + length * UserInterfaceSystem.Font.MeasureString("O").Width, 
-            4 + UserInterfaceSystem.Font.LineHeight); //TODO: probably do this better
+            10 + UserInterfaceSystem.Font.LineHeight); //TODO: probably do this better
         DisplayLength = length;
         MaxLength = maxLength;
         Content = new Text(content ?? string.Empty);

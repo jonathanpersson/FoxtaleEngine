@@ -40,7 +40,7 @@ public class Button : UIEntity
         UserInterfaceSystem.Graphics.GraphicsDevice.SetRenderTarget(result);
         UserInterfaceSystem.Graphics.GraphicsDevice.Clear(Color.Transparent);
         Rectangle button = new(0, 0, (int)buttonSize.X, (int)buttonSize.Y);
-        Vector2 textLocation = new(18, 6);
+        Vector2 textLocation = new(18, 10);
         
         sb.Begin();
         sb.FillRectangle(button, Color.Gray);
