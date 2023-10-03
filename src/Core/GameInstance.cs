@@ -49,6 +49,7 @@ public class GameInstance : Game
         _graphics.ApplyChanges();
 
         ContentManager = Content;
+        Window.AllowUserResizing = true;
 
         // initialize UI system
         UserInterfaceSystem.Initialize(_graphics, Window);
