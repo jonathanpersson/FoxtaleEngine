@@ -1,3 +1,8 @@
-﻿namespace Foxtale.Entities.UI;
+﻿using Foxtale.Components;
 
-public interface IUIEntity : IEntity { }
+namespace Foxtale.Entities.UI;
+
+public interface IUIEntity : IEntity
+{
+    public DockTransform Dock { get; set; }
+}

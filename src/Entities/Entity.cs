@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Foxtale.Components;
+using Foxtale.Core;
 using Foxtale.Exceptions;
 
 namespace Foxtale.Entities;
 
 public abstract class Entity : IEntity
 {
+    public bool Active { get; set; } = true;
+
     /// <summary>
     /// Unique identifier for the entity
     /// </summary>
@@ -21,6 +24,7 @@ public abstract class Entity : IEntity
     {
         Id = Guid.NewGuid();
         Components = new List<IComponent>();
+        Logger.Log(LogLevel.Information, $"New entity created with GUID: {Id}");
     }
 
     /// <summary>
@@ -62,7 +66,7 @@ public abstract class Entity : IEntity
         }
         catch (MissingComponentException)
         {
-            //TODO: Log error
+            Logger.Log(LogLevel.Error, $"Failed to get component of type {typeof(T)}");
             component = default(T);
         }
         return false;

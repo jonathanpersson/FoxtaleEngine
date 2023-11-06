@@ -1,4 +1,5 @@
-﻿using Foxtale.Components.UI;
+﻿using Foxtale.Components;
+using Foxtale.Components.UI;
 using Foxtale.Core;
 using Foxtale.Entities.UI;
 using Foxtale.Entities.UI.Controls;
@@ -21,13 +22,10 @@ public class Loading : Scene2D
     protected override void Activate()
     {
         GameInstance.ClearColor = Color.FromNonPremultiplied(35, 29, 26, 255);
+        Image loadingImage = new (0, 0, "Textures/foxtale", 6, Origin2D.MiddleCenter);
+        loadingImage.Dock.Style = DockStyle.MiddleCenter;
         Container container = new(
-            new Image(UserInterfaceSystem.Graphics.PreferredBackBufferWidth / 2, 
-                UserInterfaceSystem.Graphics.PreferredBackBufferHeight / 2
-                , "Textures/foxtale", 6, Origin2D.MiddleCenter)/*,
-            new AnimatedImage(UserInterfaceSystem.Graphics.PreferredBackBufferWidth / 2, 
-                UserInterfaceSystem.Graphics.PreferredBackBufferHeight / 2 - 100
-                , 78, 64, "Textures/Fox/walk", 10, 6, Origin2D.MiddleCenter)*/
+            loadingImage
         );
         container.AddComponent(new Style());
         Content.Add(container);

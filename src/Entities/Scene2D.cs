@@ -1,5 +1,6 @@
 using Foxtale.Components;
 using Foxtale.Components.Physics;
+using Foxtale.Core;
 using Microsoft.Xna.Framework;
 
 namespace Foxtale.Entities;
@@ -7,6 +8,7 @@ namespace Foxtale.Entities;
 public abstract class Scene2D : Entity2D
 {
     private bool _active = false;
+    public new bool Active => _active;
     public Children Content { get; set; }
     public IEnvironment Environment { get; }
 
@@ -71,7 +73,7 @@ public abstract class Scene2D : Entity2D
 
     public void Destroy()
     {
-        //todo: must destroy all active entities in scene
+        Logger.Log(LogLevel.Information, $"Destroying entity with entity ID: {Id}");
         Content.Destroy();
         Content.Nodes.Clear();
         Deactivate();

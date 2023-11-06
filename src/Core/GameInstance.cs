@@ -1,4 +1,5 @@
-﻿using Foxtale.Components;
+﻿using System;
+using Foxtale.Components;
 using Foxtale.Components.Physics;
 using Foxtale.Entities;
 using Foxtale.Entities.Scenes;
@@ -22,12 +23,14 @@ public class GameInstance : Game
     
     public static ContentManager ContentManager { get; set; }
     public static Color ClearColor { get; set; } = Color.Black;
+    public static GameWindow ActiveWindow { get; private set; }
 
     public GameInstance()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        Logger.Log(LogLevel.Information, "Foxtale Engine is starting...");
     }
 
     public void Run(Scene2D scene)
@@ -51,6 +54,8 @@ public class GameInstance : Game
         ContentManager = Content;
         Window.AllowUserResizing = true;
 
+        ActiveWindow = Window;
+
         // initialize UI system
         UserInterfaceSystem.Initialize(_graphics, Window);
 
@@ -71,7 +76,10 @@ public class GameInstance : Game
     {
         Input.Update();
         
-        if (Input.KeyDown(Keys.Escape)) Exit();
+        if (Input.KeyDown(Keys.Escape)) {
+            Logger.Log(LogLevel.Information ,"ESC pressed, shutting down...");
+            Exit();
+        }
         
         ScriptSystem.Update(gameTime);
         AnimationSetSystem.InitializeComponents();
@@ -100,6 +108,7 @@ public class GameInstance : Game
 
     public static void SetScene(Scene2D scene)
     {
+        Logger.Log(LogLevel.Information, "Switching active scene");
         ActiveScene?.Unload();
         ActiveScene = scene;
         ActiveScene.Load();
