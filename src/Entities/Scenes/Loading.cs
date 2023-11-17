@@ -1,6 +1,7 @@
 ﻿using Foxtale.Components;
 using Foxtale.Components.UI;
 using Foxtale.Core;
+using Foxtale.Core.Geometry;
 using Foxtale.Entities.UI;
 using Foxtale.Entities.UI.Controls;
 using Foxtale.Systems.UI;

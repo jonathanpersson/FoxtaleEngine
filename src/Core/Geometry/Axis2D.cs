@@ -1,4 +1,4 @@
-﻿namespace Foxtale.Core;
+﻿namespace Foxtale.Core.Geometry;
 public enum Axis2D
 {
     X,

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using MonoGame.Extended;
 
-namespace Foxtale.Core;
+namespace Foxtale.Core.Geometry;
 
 public class Quadrilateral
 {

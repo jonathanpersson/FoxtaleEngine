@@ -1,5 +1,5 @@
 ﻿using Foxtale.Components;
-using Foxtale.Core;
+using Foxtale.Core.Geometry;
 using Foxtale.Entities;
 using FoxtaleDemo.Components.Scripts;
 using Microsoft.Xna.Framework;

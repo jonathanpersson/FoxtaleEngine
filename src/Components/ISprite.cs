@@ -1,4 +1,4 @@
-﻿using Foxtale.Core;
+﻿using Foxtale.Core.Geometry;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
