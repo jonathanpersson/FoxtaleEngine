@@ -1,6 +1,7 @@
 ﻿using Foxtale.Components;
 using Foxtale.Components.UI;
 using Foxtale.Core;
+using Foxtale.Core.Assets;
 using Foxtale.Entities.UI;
 using Foxtale.Entities.UI.Controls;
 using Foxtale.Systems.UI;
@@ -29,6 +30,7 @@ public class Loading : Scene2D
         );
         container.AddComponent(new Style());
         Content.Add(container);
+        AssetManager.Initialize();
     }
 
     protected override void Deactivate()

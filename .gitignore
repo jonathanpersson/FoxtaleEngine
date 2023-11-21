@@ -28,6 +28,7 @@ Content/obj
 Content/bin
 Content/**/*.mgcb
 Content/*.mgcb
+Assets/src
 
 # IDE
 .vscode/
@@ -37,3 +38,8 @@ Content/*.mgcb
 # Build results
 bin/
 obj/
+
+# Foxtale Stuff
+FoxtaleDemo/bin
+FoxtaleDemo/bin/**/*
+FoxtaleDemo/bin/*.*

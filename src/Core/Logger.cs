@@ -8,6 +8,7 @@ public enum LogLevel
     Information = 0,
     Warning = 1,
     Error = 2,
+    Build = 3,
 }
 
 public static class Logger
@@ -27,9 +28,13 @@ public static class Logger
                 levelLabel = "WARNING";
                 color = ConsoleColor.Yellow;
                 break;
-            case > LogLevel.Warning:
+            case LogLevel.Error:
                 levelLabel = "ERROR";
                 color = ConsoleColor.Red;
+                break;
+            case LogLevel.Build:
+                levelLabel = "BUILD";
+                color = ConsoleColor.Green;
                 break;
             default:
                 levelLabel = "LOG";

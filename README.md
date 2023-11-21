@@ -12,21 +12,12 @@ architecture you are building for.
 To build for any platform you first need to install the latest LTS version of `.NET 6.0`, you can either install
 it from Microsoft's website, or from your platform's package manager.
 
-#### Note for ARM-users (Apple Silicon)
-If you're running on Apple Silicon, you will need both the AMD64 (x64) version of
-the .NET SDK, as well as ARM64. This is because as it currently stands MonoGame's content pipeline
-does not run on ARM-processors. It is recommended to create an alias for the x64 installation of
-.NET in your `~/.zshrc` file. For example: `alias dotnet64="/usr/local/share/dotnet/x64/dotnet"`.
-
 ### Add Foxtale Engine as a dependency
 Use your chosen IDE to add the Foxtale Engine (not Demo) project as a dependency of your own project.
 
 ### Restore dependencies
 You do not need to manually add MonoGame, Nopipeline, or any other of Foxtale Engine's dependencies. In your
 project or solution root simply run `dotnet restore`, followed by `dotnet tool restore`.
-
-#### Note for ARM-users (Apple Silicon)
-If you're running Apple Silicon, make sure you use the x64 installation of .NET to run these commands.
 
 ### Bootstrapping
 With Foxtale added as a dependency, and set up to build properly, you can now start developing!
@@ -55,10 +46,26 @@ dylib to one of the locations dotnet is expecting it to be in (you can see these
 ### Build, run, and develop!
 You can now build and run your game. Get to developing!
 
-#### Note for ARM-users (Apple Silicon)
-Only the content pipeline needs to be ran as x64, so after building your assets using the x64 .NET installation,
-you can build and run your game for ARM64.
+## Asset management
+Foxtale has moved away from using the regular MonoGame Content Pipeline, as it is unreliable at best
+when developing across platforms. You can still use the MonoGame Pipeline in your project using Foxtale,
+if you wish to do so. But it is recommended that  assets are loaded using the `AssetManager` in `Foxtale.Core.Assets`.
 
-### Nopipeline setup
-You must set a correct reference to MonoGame.Extended.Content.Pipeline in Content/Content.npl. 
-This is usually in ~/.nuget/packages/monogame.extended.content.pipeline/{VERSION}/tools/MonoGame.Extended.Content.Pipeline.dll
+### Setup
+The asset manager reads bundle info from an XML-config file. In order to read this file, and build content for
+Foxtale, you need to copy your asset directory to the output directory. To do this automatically when
+building add the following `ItemGroup` to your project's `.csproj` file.
+
+```Xml
+    <ItemGroup>
+      <Content Include="<ASSET DIRECTORY>">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+```
+
+Exchange `<ASSET DIRECTORY>` with the root directory for your assets.
+
+### Asset bundles
+The Foxtale asset manager uses content bundles to bundle related assets together. This reduces file reads, in exchange
+for some memory and CPU-time.
