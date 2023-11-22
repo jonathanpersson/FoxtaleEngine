@@ -14,6 +14,17 @@ public struct Edge2D
     public readonly float Length => 
         MathF.Sqrt((X2 - X1) * (X2 - X1) + (Y2 - Y1) * (Y2 - Y1));
 
+    public Edge2D()
+    {
+
+    }
+
+    public Edge2D(Vertex2D start, Vertex2D end)
+    {
+        Start = start;
+        End = end;
+    }
+
     public (Edge2D, Edge2D) Subdivide()
     {
         throw new NotImplementedException();
