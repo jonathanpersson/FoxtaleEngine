@@ -1,6 +1,9 @@
+using Foxtale.Core.Geometry;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
 
-public struct Vertex2D
+public struct Vertex2D : IEquatable<Vertex2D>
 {
     public Vector2 Position { get; set; }
     public Vector2 Normal { get; set; }
@@ -27,5 +30,25 @@ public struct Vertex2D
         Position = copy.Position;
         Normal = Vector2.Zero;
         UVPosition = Vector2.Zero;
+    }
+
+    public static bool operator ==(Vertex2D a, Vertex2D b)
+        => a.GetHashCode() == b.GetHashCode();
+    public static bool operator !=(Vertex2D a, Vertex2D b)
+        => a.GetHashCode() != b.GetHashCode();
+
+    public bool Equals(Vertex2D vert)
+    {
+        return GetHashCode() == vert.GetHashCode();
+    }
+    
+    public override bool Equals(object obj)
+    {
+        return obj is Vertex2D && Equals((Vertex2D)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Position.GetHashCode(), Normal.GetHashCode(), UVPosition.GetHashCode());
     }
 }

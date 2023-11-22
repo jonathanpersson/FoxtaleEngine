@@ -1,11 +1,18 @@
 using System;
+using System.Collections.Generic;
 using Foxtale.Exceptions;
 
 namespace Foxtale.Core.Geometry;
 
-public class Mesh2D : IMesh
+public struct Mesh2D : IMesh
 {
+    public List<Vertex2D> Vertices { get; set; } = new();
+    public List<Edge2D> Edges { get; set; } = new();
 
+    public Mesh2D()
+    {
+
+    }
 
     public bool Intersects(IMesh m)
     {
@@ -30,7 +37,7 @@ public class Mesh2D : IMesh
     /// <remarks>Assumes meshes _ARE_ intersecting!</remarks>
     /// <param name="m"></param>
     /// <returns></returns>
-    protected Mesh2D IntersectionMesh(Mesh2D m)
+    private Mesh2D IntersectionMesh(Mesh2D m)
     {
         throw new NotImplementedException();
     }
