@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using MonoGame.Extended;
 
 namespace Foxtale.Core.Geometry;
 
@@ -50,13 +51,33 @@ public struct Tri2D : IFace2D
         Edges[2] = new Edge2D(Vertices[2], Vertices[0]);
     }
 
+    public static float DistanceFromVertexPlane(Vector2 point, Vertex2D v1, Vertex2D v2)
+    {
+        return (v1.X - v2.X) * (point.Y - v2.Y) - (v1.Y - v2.Y) * (point.X - v2.X);
+    }
+
     public bool Intersects(IFace2D tri)
     {
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Calculate if a given point exists within the tri
+    /// </summary>
+    /// <param name="point">Point to check</param>
+    /// <returns>True iff point exists within the tri</returns>
     public bool Contains(Vector2 point)
     {
-        throw new NotImplementedException();
+        // calculate distance from two of the planes created between vertices
+        float distP1 = DistanceFromVertexPlane(point, Vertices[0], Vertices[2]);
+        float distP2 = DistanceFromVertexPlane(point, Vertices[1], Vertices[0]);
+
+        // if distP1 and distP2 have opposite signs (and not != 0)
+        // then tri cannot contain point
+        if (distP1 != 0 && distP2 != 0 && (distP1 < 0) != (distP2 < 0))
+            return false;
+        
+        float distP3 = DistanceFromVertexPlane(point, Vertices[2], Vertices[1]);
+        return distP3 == 0 || (distP3 < 0) == (distP1 + distP2 <= 0);
     }
 }
