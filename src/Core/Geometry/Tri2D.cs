@@ -10,10 +10,44 @@ public struct Tri2D : IFace2D
 {
     public Edge2D[] Edges { get; } = new Edge2D[3];
     public Vertex2D[] Vertices { get; } = new Vertex2D[3];
-
-    public Tri2D()
+    public readonly Vertex2D A => Vertices[0];
+    public readonly Vertex2D B => Vertices[1];
+    public readonly Vertex2D C => Vertices[2];
+    public readonly Vertex2D TopmostVertex
     {
-
+        get
+        {
+            Vertex2D v = Vertices[0];
+            for (int i = 1; i <= 2; i++) if (v.Y < Vertices[i].Y) v = Vertices[i];
+            return v;
+        }
+    }
+    public readonly Vertex2D BottommostVertex
+    {
+        get
+        {
+            Vertex2D v = Vertices[0];
+            for (int i = 1; i <= 2; i++) if (v.Y > Vertices[i].Y) v = Vertices[i];
+            return v;
+        }
+    }
+    public readonly Vertex2D LeftmostVertex
+    {
+        get
+        {
+            Vertex2D v = Vertices[0];
+            for (int i = 1; i <= 2; i++) if (v.X < Vertices[i].X) v = Vertices[i];
+            return v;
+        }
+    }
+    public readonly Vertex2D RightmostVertex
+    {
+        get
+        {
+            Vertex2D v = Vertices[0];
+            for (int i = 1; i <= 2; i++) if (v.X > Vertices[i].X) v = Vertices[i];
+            return v;
+        }
     }
 
     public Tri2D(Edge2D e1, Edge2D e2, Edge2D e3)
@@ -56,9 +90,27 @@ public struct Tri2D : IFace2D
         return (v1.X - v2.X) * (point.Y - v2.Y) - (v1.Y - v2.Y) * (point.X - v2.X);
     }
 
-    public bool Intersects(IFace2D tri)
+    /// <summary>
+    /// Calculate if a face intersects the tri
+    /// </summary>
+    /// <param name="face">Face to calculate intersection with</param>
+    /// <returns>True iff tri intersects face</returns>
+    /// <exception cref="InvalidOperationException">If face is not a tri</exception>
+    public bool Intersects(IFace2D face)
     {
-        throw new NotImplementedException();
+        if (face is not Tri2D tri)
+            throw new InvalidOperationException("Tri can only calculate intersection with tris");
+        return Intersects(tri);
+    }
+
+    /// <summary>
+    /// Caclulate if tri intersects another
+    /// </summary>
+    /// <param name="tri">Tri to check intersection against</param>
+    /// <returns>True iff tri intersects</returns>
+    public bool Intersects(Tri2D tri)
+    {
+        return Contains(tri.A.Position) || Contains(tri.B.Position) || Contains(tri.C.Position);
     }
 
     /// <summary>

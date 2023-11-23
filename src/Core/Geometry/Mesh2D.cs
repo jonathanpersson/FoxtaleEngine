@@ -6,7 +6,7 @@ namespace Foxtale.Core.Geometry;
 
 public struct Mesh2D : IMesh
 {
-    public List<Tri2D> Tris { get; set; } = new();
+    public List<Tri2D> Tris { get; set; } = [];
 
     public Mesh2D()
     {
