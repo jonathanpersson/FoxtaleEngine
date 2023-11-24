@@ -70,9 +70,28 @@ public struct Polygon2D : IFace2D
     /// <returns>True iff point is inside polygon</returns>
     public bool Contains(Vector2 point)
     {
-        // polygon cannot contain point if it is outside bounds
-        if (!InBounds(point)) return false;
-        throw new NotImplementedException();
+        return Raycast(Axis2D.X, point, LeftmostVertex.X >= point.X) % 2 == 1;
+    }
+
+    /// <summary>
+    /// Count edge intersections on ray cast from point in given direction
+    /// </summary>
+    /// <param name="axis">Axis to cast ray on</param>
+    /// <param name="point">Origin of raycat</param>
+    /// <param name="direction">Single bit direction, false = -axis, true = +axis</param>
+    /// <returns>Amount of times ray with origin (point) intersects an edge when cast on (dir +/-) axis</returns>
+    public int Raycast(Axis2D axis, Vector2 point, bool direction)
+    {
+        // cast a ray on given axis from point, heading in (true = +, false = -) direction
+        Edge2D ray = axis == Axis2D.X 
+            ? new(new Vertex2D(point), new Vertex2D(direction ? RightmostVertex.X + 1 : LeftmostVertex.X - 1, point.Y)) 
+            : new(new Vertex2D(point), new Vertex2D(point.X, direction ? TopmostVertex.Y + 1 : BottommostVertex.Y - 1));
+        int res = 0;
+        foreach (Edge2D edge in Edges)
+        {
+            if (edge.Intersects(ray)) ++res;
+        }
+        return res;
     }
 
     /// <summary>

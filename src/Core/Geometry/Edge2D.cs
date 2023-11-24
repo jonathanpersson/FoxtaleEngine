@@ -13,8 +13,26 @@ public struct Edge2D(Vertex2D start, Vertex2D end)
     public readonly float X2 => End.X;
     public readonly float Y1 => Start.Y;
     public readonly float Y2 => End.Y;
+    public readonly float MaxX => MathF.Max(X1, X2);
+    public readonly float MaxY => MathF.Max(Y1, Y2);
+    public readonly float MinX => MathF.Min(X1, X2);
+    public readonly float MinY => MathF.Min(X1, X2);
     public readonly float Length => 
         MathF.Sqrt((X2 - X1) * (X2 - X1) + (Y2 - Y1) * (Y2 - Y1));
+
+    /// <summary>
+    /// The axis relative to which the edge is longer
+    /// </summary>
+    /// <remarks>Slight bias toward X-axis</remarks>
+    public readonly Axis2D Horizon
+    {
+        get
+        {
+            float diffX = MathF.Abs(Start.X - End.X);
+            float diffY = MathF.Abs(Start.Y - End.Y);
+            return diffX >= diffY ? Axis2D.X : Axis2D.Y; 
+        }
+    }
 
     public (Edge2D, Edge2D) Subdivide()
     {
@@ -52,7 +70,7 @@ public struct Edge2D(Vertex2D start, Vertex2D end)
     /// <returns>True iff edges intersect</returns>
     public bool Intersects(Edge2D edge)
     {
-        static bool  isCCW(Vertex2D a, Vertex2D b, Vertex2D c) 
+        static bool isCCW(Vertex2D a, Vertex2D b, Vertex2D c) 
             => (c.Y-a.Y)*(b.X-a.X) > (b.Y-a.Y)*(c.X-a.X);
         return isCCW(Start, edge.Start, edge.End) != isCCW(End, edge.Start, edge.End)
             && isCCW(Start, End, edge.Start) != isCCW(Start, End, edge.End);
