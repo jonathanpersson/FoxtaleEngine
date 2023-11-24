@@ -63,6 +63,43 @@ public struct Polygon2D : IFace2D
         Vertices = [.. vertices];
     }
 
+    public void Add(Vertex2D vertex)
+    {
+        Vertices = [..Vertices, vertex];
+    }
+
+    public void Add(Edge2D edge)
+    {
+        Edges = [..Edges, edge];
+    }
+
+    public void Remove(Vertex2D vertex)
+    {
+        List<Vertex2D> vertices = [..Vertices];
+        vertices.Remove(vertex);
+        Vertices = [..vertices];
+    }
+
+    public void Remove(Edge2D edge)
+    {
+        List<Edge2D> edges = [..Edges];
+        edges.Remove(edge);
+        Edges = [..edges];
+    }
+
+    /// <summary>
+    /// Get the edges connected to vertex
+    /// </summary>
+    /// <param name="vertex">The vertex to query connections for</param>
+    /// <returns>An array of all edges containing vertex</returns>
+    public readonly Edge2D[] GetEdges(Vertex2D vertex)
+    {
+        return [.. from edge in Edges
+            where edge.Start == vertex 
+            || edge.End == vertex
+            select edge];
+    }
+
     /// <summary>
     /// Check if polygon contains a point
     /// </summary>
