@@ -14,7 +14,7 @@ public struct Polygon2D : IFace2D
 {
     public Vertex2D[] Vertices { get; set; }
     public Edge2D[] Edges { get; set; }
-    public Vertex2D TopmostVertex
+    public readonly Vertex2D TopmostVertex
     {
         get
         {
@@ -23,7 +23,7 @@ public struct Polygon2D : IFace2D
             return v;
         }
     }
-    public Vertex2D BottommostVertex
+    public readonly Vertex2D BottommostVertex
     {
         get
         {
@@ -32,7 +32,7 @@ public struct Polygon2D : IFace2D
             return v;
         }
     }
-    public Vertex2D LeftmostVertex
+    public readonly Vertex2D LeftmostVertex
     {
         get
         {
@@ -41,7 +41,7 @@ public struct Polygon2D : IFace2D
             return v;
         }
     }
-    public Vertex2D RightmostVertex
+    public readonly Vertex2D RightmostVertex
     {
         get
         {
