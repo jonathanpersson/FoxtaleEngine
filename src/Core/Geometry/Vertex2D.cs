@@ -1,5 +1,7 @@
 using Foxtale.Core.Geometry;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
 using System;
 using System.Collections.Generic;
 
@@ -50,5 +52,10 @@ public struct Vertex2D : IEquatable<Vertex2D>
     public override int GetHashCode()
     {
         return HashCode.Combine(Position.GetHashCode(), Normal.GetHashCode(), UVPosition.GetHashCode());
+    }
+
+    public void Draw(SpriteBatch sb, Color? color = null)
+    {
+        sb.DrawPoint(Position, color ?? Color.Blue, 2f);
     }
 }

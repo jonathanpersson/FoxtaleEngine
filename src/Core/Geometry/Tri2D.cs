@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended;
 
 namespace Foxtale.Core.Geometry;
@@ -133,5 +134,17 @@ public struct Tri2D : IFace2D
     public Polygon2D ToPolygon()
     {
         return new Polygon2D(AB, BC, CA);
+    }
+
+    /// <summary>
+    /// Draw edges and vertices of tri
+    /// </summary>
+    /// <param name="sb">SpriteBatch to draw with</param>
+    /// <param name="color">Color to draw polygon in</param>
+    /// <remarks>Should only be used for debug purposes, no care is given to optimization</remarks>
+    public void Draw(SpriteBatch sb, Color? color)
+    {
+        Polygon2D p = ToPolygon();
+        foreach (Edge2D edge in p.Edges) edge.Draw(sb, color);
     }
 }

@@ -1,4 +1,7 @@
 using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
 
 namespace Foxtale.Core.Geometry;
 
@@ -53,5 +56,12 @@ public struct Edge2D(Vertex2D start, Vertex2D end)
             => (c.Y-a.Y)*(b.X-a.X) > (b.Y-a.Y)*(c.X-a.X);
         return isCCW(Start, edge.Start, edge.End) != isCCW(End, edge.Start, edge.End)
             && isCCW(Start, End, edge.Start) != isCCW(Start, End, edge.End);
+    }
+
+    public void Draw(SpriteBatch sb, Color? color = null)
+    {
+        sb.DrawLine(Start.Position, End.Position, color ?? Color.Blue, 1f);
+        Start.Draw(sb, color);
+        End.Draw(sb, color);
     }
 }

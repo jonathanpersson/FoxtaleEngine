@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
 
 namespace Foxtale.Core.Geometry;
 
@@ -88,5 +90,16 @@ public struct Polygon2D : IFace2D
     public bool Intersects(IFace2D mesh)
     {
         throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Draw edges and vertices of polygon
+    /// </summary>
+    /// <param name="sb">SpriteBatch to draw with</param>
+    /// <param name="color">Color to draw polygon in</param>
+    /// <remarks>Should only be used for debug purposes, no care is given to optimization</remarks>
+    public void Draw(SpriteBatch sb, Color? color)
+    {
+        foreach (Edge2D edge in Edges) edge.Draw(sb, color);
     }
 }
