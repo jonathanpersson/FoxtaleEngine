@@ -30,7 +30,7 @@ public struct Mesh2D(params Tri2D[] tris) : IMesh
     {
         foreach (Tri2D t in m.Tris)
         {
-            foreach (Tri2D t1 in Tris) if (t.Intersects(t)) return true;
+            foreach (Tri2D t1 in Tris) if (t.Intersects(t1)) return true;
         }
         return false;
     }

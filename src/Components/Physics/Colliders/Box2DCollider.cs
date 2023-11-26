@@ -8,6 +8,8 @@ public class Box2DCollider : ICollider
     private Mesh2D _mesh;
     private Transform2D _transform;
     public IEntity Entity { get; set; }
+    public Mesh2D Mesh => _mesh;
+    public Transform2D Transform => _transform;
 
     public Box2DCollider(Transform2D transform)
     {
@@ -29,7 +31,7 @@ public class Box2DCollider : ICollider
 
     public bool Intersects(ICollider collider)
     {
-        return false;
+        return _mesh.Intersects(collider.Mesh);
     }
 
     public void Destroy()
