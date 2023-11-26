@@ -23,7 +23,8 @@ public class Loading : Scene2D
     protected override void Activate()
     {
         GameInstance.ClearColor = Color.FromNonPremultiplied(35, 29, 26, 255);
-        Image loadingImage = new (0, 0, "Textures/foxtale", 6, Origin2D.MiddleCenter);
+        Image loadingImage = new (0, 0, "Textures/foxtale", Origin2D.MiddleCenter);
+        loadingImage.Transform.SetScaling(6);
         loadingImage.Dock.Style = DockStyle.MiddleCenter;
         Container container = new(
             loadingImage

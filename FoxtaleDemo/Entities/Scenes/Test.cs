@@ -1,3 +1,4 @@
+using Foxtale.Components;
 using Foxtale.Entities;
 using Foxtale.Entities.UI;
 using Foxtale.Entities.UI.Controls;
@@ -14,6 +15,13 @@ public class Test : Scene2D
 
     protected override void Activate()
     {
+        // set global scaling (zoom) to 2x
+        Transform2D.SetSSScaling(2);
+
+        // set screenspace scaling (size of UI elements) to 0.5x
+        // individual screenspace elements can still set their scaling manually
+        ScreenSpaceTransform.SetSSScaling(0.5f);
+
         Content.Add(new Fox());
         Content.Add(new Container(
             new Button(500, 600, "Test Button", (object? sender, EventArgs e) =>

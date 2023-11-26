@@ -6,15 +6,25 @@ using Microsoft.Xna.Framework;
 
 namespace Foxtale.Components;
 
+/// <summary>
+/// A standard transform component used to position entities in 2D space
+/// </summary>
 public class Transform2D : IComponent
 {
+    public static Vector2 ScreenPosition { get; set; } = Vector2.Zero;
+    public static Vector2 ScreenSize { get; set; }
+    public static Vector2 ScreenOrigin => new(ScreenSize.X / 2, ScreenSize.Y / 2);
+    public static Vector2 ScreenScale { get; set; } = Vector2.One;
     public Vector2 Position { get; set; } = Vector2.Zero;
-    public Vector2 Scale { get; set; } = Vector2.One;
+    public Vector2 Scale => new(1 / ScreenScale.X, 1 / ScreenScale.Y);
     public Vector2 Size { get; set; } = Vector2.Zero;
     public Vector2 Origin { get; set; } = Vector2.Zero;
     public Rectangle Projection => 
-        new((int)Position.X, (int)Position.Y, (int)(Scale.X * Size.X), (int)(Scale.Y * Size.Y));
-    public float Rotation { get; private set; } = 0;
+        new((int)(Scale.X * Position.X + ScreenOrigin.X + ScreenPosition.X), 
+            (int)(ScreenOrigin.Y - Scale.Y * Position.Y + ScreenPosition.Y), 
+            (int)(Size.X * Scale.X), 
+            (int)(Size.Y * Scale.Y));
+    public float Rotation { get; protected set; } = 0;
     public float LayerDepth { get; set; } = 0;
     public IEntity Entity { get; set; }
 
@@ -29,10 +39,9 @@ public class Transform2D : IComponent
         Transform2DSystem.AddComponent(this);
     }
 
-    public Transform2D(Vector2 position, Vector2 scale, float rotation = 0, float layerDepth = 0)
+    public Transform2D(Vector2 position, float rotation = 0, float layerDepth = 0)
     {
         Position = position;
-        Scale = scale;
         Rotation = rotation;
         LayerDepth = layerDepth;
         Transform2DSystem.AddComponent(this);
@@ -97,5 +106,10 @@ public class Transform2D : IComponent
     public bool Contains(Vector2 point)
     {
         return Projection.Contains(point);
+    }
+
+    public static void SetSSScaling(float value)
+    {
+        ScreenScale = new Vector2(value, value);
     }
 }

@@ -57,6 +57,7 @@ public class GameInstance : Game
         ActiveWindow = Window;
 
         // initialize UI system
+        Transform2DSystem.Initialize(_graphics);
         UserInterfaceSystem.Initialize(_graphics, Window);
 
         base.Initialize();

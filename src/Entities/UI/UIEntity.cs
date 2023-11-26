@@ -3,14 +3,16 @@ using Microsoft.Xna.Framework;
 
 namespace Foxtale.Entities.UI;
 
-public class UIEntity : Entity2D, IUIEntity
+public class UIEntity : Entity, IUIEntity
 {
     public DockTransform Dock { get; set; }
+    public ScreenSpaceTransform Transform { get; set; }
 
     protected UIEntity()
     {
-        Transform.Scale = new Vector2(.5f, .5f);
+        Transform = new ScreenSpaceTransform();
         Dock = new DockTransform(Transform, DockStyle.TopLeft);
         AddComponent(Dock);
+        AddComponent(Transform);
     }
 }
