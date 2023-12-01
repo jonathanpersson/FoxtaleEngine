@@ -3,11 +3,11 @@ using Foxtale.Components;
 
 namespace Foxtale.Entities.Tiles;
 
-public class TileDef : Entity2D
+public class Definition : Entity2D
 {
     public ISprite Sprite { get; set; }
 
-    public TileDef(Texture2D sprite)
+    public Definition(Texture2D sprite)
     {
         Sprite = new Sprite(sprite)
         {

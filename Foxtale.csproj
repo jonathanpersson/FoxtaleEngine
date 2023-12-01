@@ -5,6 +5,7 @@
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
     <LangVersion>default</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -36,6 +37,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="FoxtaleDemo\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\Systems\Tiles\" />
   </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
