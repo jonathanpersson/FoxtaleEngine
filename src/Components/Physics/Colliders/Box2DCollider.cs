@@ -22,10 +22,7 @@ public class Box2DCollider : ICollider
             transform.Position.Y - transform.Size.Y - transform.Origin.Y);
         Vertex2D d = new(transform.Position.X - transform.Origin.X,
             transform.Position.Y - transform.Size.Y - transform.Origin.Y);
-        Polygon2D quad = new(new Edge2D(a, b), 
-                                new Edge2D(b, c), 
-                                new Edge2D(c, d), 
-                                new Edge2D(d, a));
+        Polygon2D quad = new(a, b, c, d);
         _mesh = Mesh2D.FromPolygon(quad);
     }
 

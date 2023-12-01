@@ -50,7 +50,12 @@ public struct Polygon2D : IFace2D
             return v;
         }
     }
-
+    
+    /// <summary>
+    /// Construct a 2D polygon from an array of edges
+    /// </summary>
+    /// <remarks>Polygon should be assumed to be non-hollow</remarks>
+    /// <param name="edges">The edges </param>
     public Polygon2D(params Edge2D[] edges)
     {
         Edges = edges;
@@ -61,6 +66,28 @@ public struct Polygon2D : IFace2D
             vertices.Add(edge.End);
         }
         Vertices = [.. vertices];
+    }
+    
+    /// <summary>
+    /// Construct a 2D polygon from an array of vertices.
+    /// An edge is made between edge subsequent vertex
+    /// </summary>
+    /// <remarks>Vertices are assumed to be in order, and polygon should be assumed to be non-hollow</remarks>
+    /// <param name="vertices">Vertices (in order) to create edges between</param>
+    /// <exception cref="ArgumentOutOfRangeException">Polygon must define at least two vertices to create an edge from</exception>
+    public Polygon2D(params Vertex2D[] vertices)
+    {
+        if (vertices.Length < 2)
+            throw new ArgumentOutOfRangeException(nameof(vertices), "Polygon must contain at least one edge!");
+        List<Edge2D> edges = [];
+        for (int i = 1; i < vertices.Length; i++)
+        {
+            edges.Add(new Edge2D(vertices[i - 1], vertices[i]));
+        }
+
+        edges.Add(new Edge2D(vertices[^1], vertices[0]));
+        Vertices = vertices;
+        Edges = edges.ToArray();
     }
 
     public void Add(Vertex2D vertex)
