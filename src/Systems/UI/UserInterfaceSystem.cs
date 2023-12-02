@@ -1,4 +1,5 @@
 using System;
+using Foxtale.Components;
 using Foxtale.Components.UI;
 using Foxtale.Entities.UI;
 using Foxtale.Entities.UI.Controls;
@@ -36,7 +37,7 @@ public class UserInterfaceSystem : BaseSystem<UIComponent>
         Font = font;
         infoContainer = new Container(
             new Label(4, 4, $"Foxtale Engine Pre-Alpha"),
-            new FrameCounter(4, 32)
+            new FrameCounter(4, (int)(32 * ScreenSpaceTransform.ScreenScale.Y))
         );
     }
     

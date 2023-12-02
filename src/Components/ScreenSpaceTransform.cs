@@ -13,8 +13,8 @@ namespace Foxtale.Components;
 public class ScreenSpaceTransform : Transform2D
 {
     private Vector2? _scale = null;
-    public new static Vector2 ScreenPosition { get; set; } = Vector2.Zero;
-    public new static Vector2 ScreenScale { get; set; } = Vector2.One;
+    public new static Vector2 ScreenPosition { get; set; }
+    public new static Vector2 ScreenScale { get; set; }
     public new static Vector2 ScreenOrigin => Vector2.Zero;
     public new Vector2 Scale
     {

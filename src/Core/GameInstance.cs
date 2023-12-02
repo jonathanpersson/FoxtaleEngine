@@ -55,7 +55,11 @@ public class GameInstance : Game
         Window.AllowUserResizing = true;
 
         ActiveWindow = Window;
-
+        
+        // set defaults
+        ScreenSpaceTransform.ScreenPosition = Vector2.Zero;
+        ScreenSpaceTransform.ScreenScale = new Vector2(0.5f, 0.5f);
+        
         // initialize UI system
         Transform2DSystem.Initialize(_graphics);
         UserInterfaceSystem.Initialize(_graphics, Window);
