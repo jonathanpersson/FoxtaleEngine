@@ -11,10 +11,8 @@ public class MapData : IComponent
 {
     private long _width;
     private long _height;
-    private Dictionary<Guid, Definition> _tiles;
     private DataMatrix<Chunk> _chunks;
     public IEntity Entity { get; set; }
-    public Definition this[Guid id] => _tiles[id];
     public int HorizontalChunks => _chunks.Width;
     public int VerticalChunks => _chunks.Height;
     public long ChunkWidth => _width / HorizontalChunks;

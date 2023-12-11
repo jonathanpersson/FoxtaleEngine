@@ -8,16 +8,17 @@ public class Tile : Entity2D
 {
     public bool HasCollision { get; set; }
     public ICollider? Collider { get; set; }
-    public Guid TileDefId { get; }
+    public (int X, int Y) TilesetPosition { get; set; }
+    public Map Tilemap { get; set; }
 
-    public Tile(Guid tileDefId)
+    public Tile()
     {
-        TileDefId = tileDefId;
+        
     }
-
-    public Tile(Guid tileDefId, bool hasCollision, ICollider? collider = null)
+    
+    public Tile((int X, int Y) tilesetPos, bool hasCollision, ICollider? collider = null)
     {
-        TileDefId = tileDefId;
+        TilesetPosition = tilesetPos;
         HasCollision = hasCollision;
 
         if (!HasCollision) return;
