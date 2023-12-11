@@ -114,6 +114,12 @@ public struct Polygon2D : IFace2D
         Edges = [..edges];
     }
 
+    public void Move(Vector2 distance)
+    {
+        for (int i = 0; i < Vertices.Length; i++)
+            Vertices[i].Position += distance;
+    }
+
     /// <summary>
     /// Get the edges connected to vertex
     /// </summary>

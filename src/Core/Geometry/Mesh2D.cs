@@ -11,8 +11,13 @@ namespace Foxtale.Core.Geometry;
 /// <param name="tris">Mesh faces</param>
 public struct Mesh2D(params Tri2D[] tris) : IMesh
 {
-    public List<Tri2D> Tris { get; set; } = new List<Tri2D>(tris);
+    public List<Tri2D> Tris { get; set; } = new(tris);
     public Vector2 Origin { get; set; }
+
+    public void Move(Vector2 distance)
+    {
+        foreach (Tri2D tri in Tris) tri.Move(distance);
+    }
 
     public bool Intersects(IMesh m)
     {
@@ -35,6 +40,12 @@ public struct Mesh2D(params Tri2D[] tris) : IMesh
         return false;
     }
 
+    public bool Intersects(Mesh2D m, Vector2 distance)
+    {
+        Mesh2D movedMesh = CopyMove(m, distance);
+        return Intersects(movedMesh);
+    }
+
     /// <summary>
     /// Create a new mesh from intersecting area
     /// </summary>
@@ -44,6 +55,19 @@ public struct Mesh2D(params Tri2D[] tris) : IMesh
     private Mesh2D IntersectionMesh(Mesh2D m)
     {
         throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Copy mesh and move it
+    /// </summary>
+    /// <param name="mesh">Mesh to copy</param>
+    /// <param name="distance">Distance to move copy</param>
+    /// <returns>A copy of mesh, moved by distance</returns>
+    public static Mesh2D CopyMove(Mesh2D mesh, Vector2 distance)
+    {
+        Mesh2D m = new Mesh2D([..mesh.Tris]);
+        m.Move(distance);
+        return m;
     }
 
     /// <summary>
@@ -57,9 +81,12 @@ public struct Mesh2D(params Tri2D[] tris) : IMesh
     {
         if (face.Vertices.Length < 3)
             throw new ArgumentException("Polygon face must have at least three vertices!");
-        else if (face.Vertices.Length == 3)
-            return new Mesh2D(new Tri2D(face.Vertices[0], face.Vertices[1], face.Vertices[2]));
-        return new Mesh2D([..Triangulate(face)]);
+        return face.Vertices.Length == 3 
+            ? new Mesh2D(new Tri2D(
+                face.Vertices[0], 
+                face.Vertices[1], 
+                face.Vertices[2])) 
+            : new Mesh2D([..Triangulate(face)]);
     }
 
     private static List<Tri2D> Triangulate(Polygon2D face)

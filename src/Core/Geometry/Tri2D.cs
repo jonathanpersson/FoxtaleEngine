@@ -79,6 +79,12 @@ public struct Tri2D : IFace2D
         Vertices[2] = new Vertex2D(c);
     }
 
+    public void Move(Vector2 dist)
+    {
+        for (int i = 0; i <= 3; i++)
+            Vertices[i].Position += dist;
+    }
+
     /// <summary>
     /// Calculate if a face intersects the tri
     /// </summary>
